@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wedding Invitation - Ari & Vinda</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Opening Section with Mosque Silhouette -->
+    <section id="opening" class="section opening-section">
+        <div class="mosque-silhouette"></div>
+        <div class="stars"></div>
+        <div class="opening-content">
+            <div class="bismillah">بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ</div>
+            <p class="opening-text">Assalamu'alaikum Warahmatullahi Wabarakatuh</p>
+            <div class="geometric-divider"></div>
+      
+            
+            <!-- Guest Name Display -->
+            <div class="guest-name-container" id="guest-name-container">
+                <p class="kepada-text">Kepada Yth.</p>
+                <h3 class="guest-name" id="guest-name">Tamu Undangan</h3>
+            </div>
+            
+            <button class="open-invitation-btn" onclick="openInvitation()">
+                <i class="fas fa-envelope-open"></i>
+                <span>Buka Undangan</span>
+            </button>
+        </div>
+        <div class="islamic-pattern-border"></div>
+
+          <!-- Couple Illustration -->
+            <!-- <div class="couple-illustration">
+                <img src="minang.png" alt="Couple Illustration">
+            </div> -->
+    </section>
+
+    <!-- Main Content (Initially Hidden) -->
+    <main id="main-content" class="hidden">
+        <!-- Hero Section -->
+        <section id="hero" class="section hero-section">
+            <div class="hero-overlay"></div>
+            <div class="floating-lanterns"></div>
+            <div class="hero-content">
+                <div class="save-the-date">SAVE THE DATE</div>
+                <div class="couple-names">
+                    <span class="groom-name">Ari</span>
+                    <span class="ampersand">&</span>
+                    <span class="bride-name">Vinda</span>
+                </div>
+                <div class="wedding-date">
+                    <span class="hijri-date">15 Jumadil Akhir 1447 H</span>
+                    <span class="gregorian-date">Sabtu, 15 Februari 2026</span>
+                </div>
+            </div>
+            <div class="scroll-indicator">
+                <i class="fas fa-chevron-down"></i>
+            </div>
+        </section>
+
+        <!-- Quran Verse Section -->
+        <section id="verse" class="section verse-section">
+            <div class="islamic-frame">
+                <div class="verse-content">
+                    <div class="arabic-verse">
+                        وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً
+                    </div>
+                    <div class="verse-translation">
+                        "Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu istri-istri dari jenismu sendiri, supaya kamu cenderung dan merasa tenteram kepadanya, dan dijadikan-Nya di antaramu rasa kasih dan sayang."
+                    </div>
+                    <div class="verse-reference">— QS. Ar-Rum: 21 —</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Couple Section -->
+        <section id="couple" class="section couple-section">
+            <div class="section-header">
+                <div class="ornament-top"></div>
+                <h2>Mempelai</h2>
+                <div class="ornament-bottom"></div>
+            </div>
+            
+            <div class="couple-container">
+                <!-- Groom -->
+                <div class="person-card groom-card" data-aos="fade-right">
+                    <div class="photo-frame">
+                        <div class="photo-placeholder">
+                            <i class="fas fa-user"></i>
+                        </div>
+                    </div>
+                    <div class="person-info">
+                        <h3 class="person-name">Ariyadi Armi, S.Pd.</h3>
+                        <p class="person-title">Putra Pertama dari</p>
+                        <p class="parent-names">Bapak Ardi<br>& Ibu Kasmiati</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="couple-divider">
+                    <div class="heart-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                </div>
+
+                <!-- Bride -->
+                <div class="person-card bride-card" data-aos="fade-left">
+                    <div class="photo-frame">
+                        <div class="photo-placeholder">
+                            <i class="fas fa-user"></i>
+                        </div>
+                    </div>
+                    <div class="person-info">
+                        <h3 class="person-name">Delvinda Trie Febrya, S.K.M.</h3>
+                        <p class="person-title">Putri Ketiga dari</p>
+                        <p class="parent-names">Bapak H. Asrizal<br>& Ibu Hj. Yusmeiyeni</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Countdown Section -->
+        <section id="countdown" class="section countdown-section">
+            <div class="countdown-bg"></div>
+            <div class="section-header light">
+                <h2>Menghitung Hari</h2>
+            </div>
+            <div class="countdown-container">
+                <div class="countdown-item">
+                    <span class="countdown-number" id="days">00</span>
+                    <span class="countdown-label">Hari</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-number" id="hours">00</span>
+                    <span class="countdown-label">Jam</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-number" id="minutes">00</span>
+                    <span class="countdown-label">Menit</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-number" id="seconds">00</span>
+                    <span class="countdown-label">Detik</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Event Details Section -->
+        <section id="events" class="section events-section">
+            <div class="section-header">
+                <div class="ornament-top"></div>
+                <h2>Acara Pernikahan</h2>
+                <div class="ornament-bottom"></div>
+            </div>
+
+            <div class="events-container">
+                <!-- Akad Nikah -->
+                <div class="event-card" data-aos="fade-up">
+                    <div class="event-icon">
+                        <i class="fas fa-ring"></i>
+                    </div>
+                    <h3 class="event-title">Akad Nikah</h3>
+                    <div class="event-details">
+                        <div class="detail-item">
+                            <i class="far fa-calendar"></i>
+                            <span>Sabtu, 15 Februari 2026</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="far fa-clock"></i>
+                            <span>08:00 - 10:00 WIB</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-mosque"></i>
+                            <span>Masjid Al-Ikhlas</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Jl. Masjid Raya No. 123, Jakarta Selatan</span>
+                        </div>
+                    </div>
+                    <a href="https://maps.google.com" target="_blank" class="map-btn">
+                        <i class="fas fa-map"></i> Lihat Lokasi
+                    </a>
+                </div>
+
+                <!-- Resepsi -->
+                <div class="event-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="event-icon">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <h3 class="event-title">Resepsi</h3>
+                    <div class="event-details">
+                        <div class="detail-item">
+                            <i class="far fa-calendar"></i>
+                            <span>Sabtu, 15 Februari 2026</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="far fa-clock"></i>
+                            <span>11:00 - 14:00 WIB</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-building"></i>
+                            <span>Gedung Serbaguna Madinah</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Jl. Harmoni Indah No. 456, Jakarta Selatan</span>
+                        </div>
+                    </div>
+                    <a href="https://maps.app.goo.gl/vK8JcwMUAgQ9qsXP9?g_st=ipc" target="_blank" class="map-btn">
+                        <i class="fas fa-map"></i> Lihat Lokasi
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- RSVP Section -->
+        <section id="rsvp" class="section rsvp-section">
+            <div class="section-header">
+                <div class="ornament-top"></div>
+                <h2>Konfirmasi Kehadiran</h2>
+                <div class="ornament-bottom"></div>
+            </div>
+
+            <form class="rsvp-form" data-aos="fade-up">
+                <div class="form-group">
+                    <label for="name">Nama Lengkap</label>
+                    <input type="text" id="name" name="name" placeholder="Masukkan nama lengkap" required>
+                </div>
+                <div class="form-group">
+                    <label for="attendance">Konfirmasi Kehadiran</label>
+                    <select id="attendance" name="attendance" required>
+                        <option value="">Pilih konfirmasi</option>
+                        <option value="hadir">Insya Allah Hadir</option>
+                        <option value="tidak">Maaf, Tidak Bisa Hadir</option>
+                        <option value="ragu">Masih Ragu</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="guests">Jumlah Tamu</label>
+                    <select id="guests" name="guests">
+                        <option value="1">1 Orang</option>
+                        <option value="2">2 Orang</option>
+                        <option value="3">3 Orang</option>
+                        <option value="4">4 Orang</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="message">Ucapan & Doa</label>
+                    <textarea id="message" name="message" rows="4" placeholder="Tulis ucapan dan doa untuk kedua mempelai..."></textarea>
+                </div>
+                <button type="submit" class="submit-btn">
+                    <i class="fas fa-paper-plane"></i> Kirim Ucapan
+                </button>
+            </form>
+        </section>
+
+        <!-- Wishes Section -->
+        <section id="wishes" class="section wishes-section">
+            <div class="section-header">
+                <div class="ornament-top"></div>
+                <h2>Ucapan & Doa</h2>
+                <div class="ornament-bottom"></div>
+            </div>
+
+            <div class="wishes-container" id="wishes-container">
+                <!-- Sample wishes -->
+                <div class="wish-card" data-aos="fade-up">
+                    <div class="wish-header">
+                        <div class="wish-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="wish-info">
+                            <h4>Budi Santoso</h4>
+                            <span class="wish-status attending">Hadir</span>
+                        </div>
+                    </div>
+                    <p class="wish-message">Barakallahu lakuma wa baraka 'alaikuma wa jama'a bainakuma fi khair. Semoga menjadi keluarga yang sakinah, mawaddah, wa rahmah. Aamiin.</p>
+                </div>
+                <div class="wish-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="wish-header">
+                        <div class="wish-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="wish-info">
+                            <h4>Siti Nurhaliza</h4>
+                            <span class="wish-status attending">Hadir</span>
+                        </div>
+                    </div>
+                    <p class="wish-message">Selamat menempuh hidup baru! Semoga menjadi pasangan yang selalu saling melengkapi dan mendukung dalam kebaikan. Happy wedding!</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gift Section -->
+        <section id="gift" class="section gift-section">
+            <div class="section-header light">
+                <div class="ornament-top"></div>
+                <h2>Hadiah Pernikahan</h2>
+                <div class="ornament-bottom"></div>
+                <p class="gift-note">Doa restu Anda merupakan karunia yang sangat berarti bagi kami. Namun jika Anda ingin memberikan hadiah, kami menyediakan amplop digital.</p>
+            </div>
+
+            <div class="gift-container">
+                <div class="gift-card" data-aos="fade-up">
+                    <div class="bank-logo">
+                        <i class="fas fa-university"></i>
+                    </div>
+                    <h4>Bank BCA</h4>
+                    <p class="account-number">1234567890</p>
+                    <p class="account-name">a.n. Ahmad Fauzan</p>
+                    <button class="copy-btn" onclick="copyToClipboard('1234567890')">
+                        <i class="fas fa-copy"></i> Salin
+                    </button>
+                </div>
+                <div class="gift-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="bank-logo">
+                        <i class="fas fa-university"></i>
+                    </div>
+                    <h4>Bank Mandiri</h4>
+                    <p class="account-number">0987654321</p>
+                    <p class="account-name">a.n. Fatimah Azzahra</p>
+                    <button class="copy-btn" onclick="copyToClipboard('0987654321')">
+                        <i class="fas fa-copy"></i> Salin
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Closing Section -->
+        <section id="closing" class="section closing-section">
+            <div class="closing-content">
+                <div class="closing-verse">
+                    <p class="arabic-text">وَالْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ</p>
+                    <p class="translation">"Segala puji bagi Allah, Tuhan semesta alam"</p>
+                </div>
+                <div class="thank-you">
+                    <h2>Terima Kasih</h2>
+                    <p>Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir untuk memberikan doa restu kepada kami.</p>
+                    <div class="couple-signature">
+                        <span>Ari & Vinda</span>
+                    </div>
+                </div>
+                <div class="closing-mosque"></div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Made with <i class="fas fa-heart"></i>Ari & Vinda</p>
+            <p class="copyright">© 2026 Wedding Invitation</p>
+        </footer>
+    </main>
+
+    <!-- Music Player -->
+    <div class="music-player">
+        <button class="music-btn" onclick="toggleMusic()">
+            <i class="fas fa-music" id="music-icon"></i>
+        </button>
+    </div>
+
+    <!-- Floating Action Buttons -->
+    <div class="floating-buttons">
+        <button class="float-btn scroll-top-btn" onclick="scrollToTop()" title="Kembali ke atas">
+            <i class="fas fa-chevron-up"></i>
+        </button>
+    </div>
+
+    <!-- Audio - Replace with your own nasheed file -->
+    <audio id="bg-music" loop>
+        <!-- Local file (recommended) -->
+        <source src="audio/nasheed.mp3" type="audio/mpeg">
+        <!-- Or use online URL as backup -->
+    </audio>
+    
+    <!-- 
+    HOW TO ADD YOUR MUSIC:
+    1. Create folder: audio/
+    2. Add your MP3 file as: audio/nasheed.mp3
+    3. Or change the src to any MP3 URL
+    -->
+
+    <script src="js/script.js"></script>
+</body>
+</html>

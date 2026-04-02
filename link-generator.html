@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Link Generator - Wedding Invitation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #800020 0%, #5C0011 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            color: #800020;
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 2rem;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 40px;
+        }
+
+        .base-url-section {
+            background: #FFF8F0;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            border: 2px solid #D4AF37;
+        }
+
+        .base-url-section label {
+            display: block;
+            font-weight: 600;
+            color: #800020;
+            margin-bottom: 10px;
+        }
+
+        .base-url-section input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        .generator-section {
+            background: #f9f9f9;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+        input[type="text"], textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        input[type="text"]:focus, textarea:focus {
+            outline: none;
+            border-color: #D4AF37;
+        }
+
+        textarea {
+            min-height: 200px;
+            font-family: monospace;
+            resize: vertical;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #800020 0%, #5C0011 100%);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(128, 0, 32, 0.4);
+        }
+
+        .result-section {
+            background: #f0f0f0;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            display: none;
+        }
+
+        .result-section.show {
+            display: block;
+        }
+
+        .link-item {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            border-left: 4px solid #D4AF37;
+        }
+
+        .link-name {
+            font-weight: 600;
+            color: #800020;
+            margin-bottom: 5px;
+        }
+
+        .link-url {
+            word-break: break-all;
+            color: #0066cc;
+            font-size: 0.9rem;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .copy-btn {
+            background: #D4AF37;
+            color: #333;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .copy-btn:hover {
+            background: #B8960C;
+        }
+
+        .info-box {
+            background: #e8f5e9;
+            border-left: 4px solid #4caf50;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+
+        .info-box h3 {
+            color: #2e7d32;
+            margin-bottom: 10px;
+        }
+
+        .example {
+            background: #fff;
+            padding: 10px;
+            border-radius: 5px;
+            font-family: monospace;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎊 Link Generator</h1>
+        <p class="subtitle">Generate personalized wedding invitation links</p>
+
+        <div class="base-url-section">
+            <label for="base-url">🌐 Base URL Website Anda:</label>
+            <input type="text" id="base-url" value="https://joecranberries.github.io/" placeholder="https://yourwebsite.com/">
+            <small style="color: #666; margin-top: 8px; display: block;">Pastikan URL diakhiri dengan /</small>
+        </div>
+
+        <div class="generator-section">
+            <h3 style="margin-bottom: 20px; color: #800020;">📝 Masukkan Nama Tamu</h3>
+            
+            <div class="form-group">
+                <label for="single-name">Metode 1: Generate Link Satu Per Satu</label>
+                <input type="text" id="single-name" placeholder="Contoh: FKM 15 UNAND">
+                <button class="btn" onclick="generateSingleLink()" style="margin-top: 10px;">Generate Link</button>
+            </div>
+
+            <div style="text-align: center; margin: 30px 0; color: #999;">- ATAU -</div>
+
+            <div class="form-group">
+                <label for="bulk-names">Metode 2: Generate Banyak Link Sekaligus (Satu nama per baris)</label>
+                <textarea id="bulk-names" placeholder="FKM 15 UNAND
+Budi Santoso
+Keluarga Besar Pak Ahmad
+Siti Nurhaliza
+Teman-Teman Kantor"></textarea>
+                <button class="btn" onclick="generateBulkLinks()" style="margin-top: 10px;">Generate Semua Link</button>
+            </div>
+        </div>
+
+        <div class="result-section" id="result-section">
+            <h3 style="margin-bottom: 15px; color: #800020;">✅ Link yang Dihasilkan:</h3>
+            <div id="links-container"></div>
+            <button class="btn" onclick="copyAllLinks()" style="margin-top: 20px; background: #4caf50;">📋 Salin Semua Link</button>
+        </div>
+
+        <div class="info-box">
+            <h3>📌 Cara Menggunakan:</h3>
+            <ol style="margin-left: 20px; line-height: 1.8;">
+                <li>Masukkan base URL website Anda (contoh: https://joecranberries.github.io/)</li>
+                <li>Masukkan nama tamu (satu per satu atau banyak sekaligus)</li>
+                <li>Klik tombol generate</li>
+                <li>Salin link dan kirim ke tamu</li>
+            </ol>
+            <div class="example">
+                <strong>Contoh hasil:</strong><br>
+                https://joecranberries.github.io/?to=FKM%2015%20UNAND
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function getBaseUrl() {
+            let url = document.getElementById('base-url').value.trim();
+            if (!url.endsWith('/')) {
+                url += '/';
+            }
+            return url;
+        }
+
+        function generateSingleLink() {
+            const name = document.getElementById('single-name').value.trim();
+            if (!name) {
+                alert('Masukkan nama tamu!');
+                return;
+            }
+
+            const baseUrl = getBaseUrl();
+            const encodedName = encodeURIComponent(name);
+            const link = `${baseUrl}?to=${encodedName}`;
+
+            displayLinks([{ name, link }]);
+            document.getElementById('single-name').value = '';
+        }
+
+        function generateBulkLinks() {
+            const names = document.getElementById('bulk-names').value.trim().split('\n').filter(n => n.trim());
+            if (names.length === 0) {
+                alert('Masukkan minimal satu nama tamu!');
+                return;
+            }
+
+            const baseUrl = getBaseUrl();
+            const links = names.map(name => {
+                const trimmedName = name.trim();
+                const encodedName = encodeURIComponent(trimmedName);
+                const link = `${baseUrl}?to=${encodedName}`;
+                return { name: trimmedName, link };
+            });
+
+            displayLinks(links);
+        }
+
+        function displayLinks(links) {
+            const container = document.getElementById('links-container');
+            const resultSection = document.getElementById('result-section');
+            
+            container.innerHTML = '';
+            links.forEach((item, index) => {
+                const linkItem = document.createElement('div');
+                linkItem.className = 'link-item';
+                linkItem.innerHTML = `
+                    <div class="link-name">${index + 1}. ${item.name}</div>
+                    <a href="${item.link}" target="_blank" class="link-url">${item.link}</a>
+                    <button class="copy-btn" onclick="copyLink('${item.link}')">📋 Salin Link</button>
+                `;
+                container.appendChild(linkItem);
+            });
+
+            resultSection.classList.add('show');
+            resultSection.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
+        function copyLink(link) {
+            navigator.clipboard.writeText(link).then(() => {
+                alert('Link berhasil disalin! ✅');
+            });
+        }
+
+        function copyAllLinks() {
+            const links = Array.from(document.querySelectorAll('.link-url')).map(a => a.textContent).join('\n\n');
+            navigator.clipboard.writeText(links).then(() => {
+                alert('Semua link berhasil disalin! ✅');
+            });
+        }
+    </script>
+</body>
+</html>
