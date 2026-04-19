@@ -233,18 +233,16 @@ document.addEventListener('DOMContentLoaded', () => {
             // Get form data
             const formData = new FormData(rsvpForm);
             const name = formData.get('name');
-            const attendance = formData.get('attendance');
-            const guests = formData.get('guests');
             const message = formData.get('message');
             
             // Validate
-            if (!name || !attendance) {
+            if (!name) {
                 showNotification('Mohon lengkapi data yang diperlukan');
                 return;
             }
             
             // Create wish card
-            addWishCard(name, attendance, message);
+            addWishCard(name, message);
             
             // Reset form
             rsvpForm.reset();
@@ -261,12 +259,8 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // ===== Add Wish Card =====
-function addWishCard(name, attendance, message) {
+function addWishCard(name, message) {
     const wishesContainer = document.getElementById('wishes-container');
-    
-    const statusText = attendance === 'hadir' ? 'Hadir' : 
-                       attendance === 'tidak' ? 'Tidak Hadir' : 'Ragu-ragu';
-    const statusClass = attendance === 'hadir' ? 'attending' : 'not-attending';
     
     const wishCard = document.createElement('div');
     wishCard.className = 'wish-card';
@@ -278,7 +272,6 @@ function addWishCard(name, attendance, message) {
             </div>
             <div class="wish-info">
                 <h4>${escapeHtml(name)}</h4>
-                <span class="wish-status ${statusClass}">${statusText}</span>
             </div>
         </div>
         <p class="wish-message">${message ? escapeHtml(message) : 'Tidak ada ucapan'}</p>
