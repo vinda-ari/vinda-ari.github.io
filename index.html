@@ -6,9 +6,280 @@
     <title>Wedding Invitation - Ari & Vinda</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Lora:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* ===== VERSE SECTION IMPROVEMENTS ===== */
+        .verse-section {
+            background: linear-gradient(135deg, #f5e6e8 0%, #e8f0e6 50%, #f0ebe8 100%);
+            padding: 100px 20px;
+            position: relative;
+            overflow: hidden;
+            min-height: auto;
+        }
+
+        .verse-decorative-top {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            height: 60px;
+            background: linear-gradient(180deg, transparent 0%, rgba(200, 160, 170, 0.1) 100%);
+        }
+
+        .verse-decorative-bottom {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            height: 60px;
+            background: linear-gradient(0deg, transparent 0%, rgba(200, 160, 170, 0.1) 100%);
+        }
+
+        .islamic-frame {
+            background: rgba(255, 255, 255, 0.85);
+            border: 3px solid rgba(200, 140, 160, 0.6);
+            border-radius: 25px;
+            padding: 70px 50px;
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 15px 50px rgba(140, 100, 120, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+        }
+
+        .verse-content {
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .verse-ornament-top,
+        .verse-ornament-bottom {
+            color: rgba(200, 140, 160, 0.7);
+            font-size: 1.5rem;
+            margin: 15px 0;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .verse-ornament-bottom {
+            animation: float 3s ease-in-out infinite reverse;
+        }
+
+        .arabic-verse {
+            font-family: 'Amiri', serif;
+            font-size: 2.2rem;
+            line-height: 2.2;
+            color: #800020;
+            margin: 20px 0 30px 0;
+            direction: rtl;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-shadow: 0 2px 4px rgba(200, 140, 160, 0.15);
+        }
+
+        .verse-divider {
+            width: 100px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(200, 140, 160, 0.5), transparent);
+            margin: 30px auto;
+        }
+
+        .verse-translation {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.1rem;
+            line-height: 1.9;
+            color: #666;
+            font-style: italic;
+            margin: 30px 0;
+            letter-spacing: 0.3px;
+        }
+
+        .verse-reference {
+            font-family: 'Lora', serif;
+            font-size: 1.05rem;
+            color: #800020;
+            font-weight: 600;
+            letter-spacing: 2px;
+            margin-top: 20px;
+            text-transform: uppercase;
+        }
+
+        /* ===== INVITATION INTRO SECTION ===== */
+        .invitation-intro-section {
+            background: linear-gradient(135deg, #5C0011 0%, #800020 100%);
+            padding: 100px 20px;
+            position: relative;
+            overflow: hidden;
+            min-height: auto;
+        }
+
+        .intro-backdrop {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(212, 175, 55, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(212, 175, 55, 0.05) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .intro-content {
+            max-width: 850px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .intro-ornament-top,
+        .intro-ornament-bottom {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 1.5rem;
+            margin: 15px 0;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .intro-ornament-bottom {
+            animation: float 3s ease-in-out infinite reverse;
+        }
+
+        .intro-text {
+            font-family: 'Lora', serif;
+            font-size: 1.3rem;
+            line-height: 2;
+            color: #f5f5f5;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+            padding: 50px 40px;
+            border-left: 5px solid rgba(255, 255, 255, 0.4);
+            border-right: 5px solid rgba(255, 255, 255, 0.4);
+            background: rgba(0, 0, 0, 0.15);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            position: relative;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        /* ===== BLESSING SECTION ===== */
+        .blessing-wrapper {
+            margin-top: 80px;
+            text-align: center;
+        }
+
+        .blessing-title {
+            font-family: 'Lora', serif;
+            font-size: 2rem;
+            color: #f5f5f5;
+            margin-bottom: 40px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .blessing-title::before,
+        .blessing-title::after {
+            content: '✦';
+            color: rgba(212, 175, 55, 0.6);
+            margin: 0 15px;
+            font-size: 1rem;
+        }
+
+        .blessing-section {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 40px 30px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            position: relative;
+            z-index: 1;
+        }
+
+        .blessing-arabic {
+            font-family: 'Amiri', serif;
+            font-size: 1.4rem;
+            line-height: 2;
+            color: #f5f5f5;
+            direction: rtl;
+            margin: 0 0 20px 0;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .blessing-translation {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.9);
+            font-style: italic;
+            margin: 0;
+            letter-spacing: 0.3px;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(10px);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes bounceDown {
+            0%, 100% {
+                transform: translateX(-50%) translateY(0);
+            }
+            50% {
+                transform: translateX(-50%) translateY(5px);
+            }
+        }
+
+        @keyframes bounceUp {
+            0%, 100% {
+                transform: translateX(-50%) translateY(0);
+            }
+            50% {
+                transform: translateX(-50%) translateY(-5px);
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Opening Section with Mosque Silhouette -->
@@ -16,15 +287,24 @@
         <div class="mosque-silhouette"></div>
         <div class="stars"></div>
         <div class="opening-content">
-            <div class="bismillah">بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ</div>
-            <p class="opening-text">Assalamu'alaikum Warahmatullahi Wabarakatuh</p>
+            <p class="opening-text">السَّلاَمُ عَلَيْكُمْ وَرَحْمَةُ اللهِ وَبَرَكَاتُهُ</p>
+            <div class="wedding-intro">
+                <h2>The Wedding of</h2>
+                <div class="wedding-couple-names">
+                    <span class="couple-first">Ari</span>
+                    <span class="couple-and">&</span>
+                    <span class="couple-second">Vinda</span>
+                </div>
+                <p class="wedding-hashtag">#hARInyaVINDA</p>
+            </div>
             <div class="geometric-divider"></div>
       
             
             <!-- Guest Name Display -->
             <div class="guest-name-container" id="guest-name-container">
                 <p class="kepada-text">Kepada Yth.</p>
-                <h3 class="guest-name" id="guest-name">Tamu Undangan</h3>
+                <p class="kepada-text">Bapak/Ibu/Saudara/i:</p>
+                <h2 class="guest-name" id="guest-name">Tamu Undangan</h2>
             </div>
             
             <button class="open-invitation-btn" onclick="openInvitation()">
@@ -43,7 +323,7 @@
     <!-- Main Content (Initially Hidden) -->
     <main id="main-content" class="hidden">
         <!-- Hero Section -->
-        <section id="hero" class="section hero-section">
+        <!-- <section id="hero" class="section hero-section">
             <div class="hero-overlay"></div>
             <div class="floating-lanterns"></div>
             <div class="hero-content">
@@ -61,20 +341,37 @@
             <div class="scroll-indicator">
                 <i class="fas fa-chevron-down"></i>
             </div>
-        </section>
+        </section> -->
 
         <!-- Quran Verse Section -->
         <section id="verse" class="section verse-section">
-            <div class="islamic-frame">
+            <div class="verse-decorative-top"></div>
+            <div class="islamic-frame" data-aos="fade-up" data-aos-delay="100">
                 <div class="verse-content">
-                    <div class="arabic-verse">
+                    <div class="verse-ornament-top">✦</div>
+                    <div class="arabic-verse" data-aos="fade-up" data-aos-delay="200">
                         وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً
                     </div>
-                    <div class="verse-translation">
+                    <div class="verse-divider"></div>
+                    <div class="verse-translation" data-aos="fade-up" data-aos-delay="300">
                         "Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu istri-istri dari jenismu sendiri, supaya kamu cenderung dan merasa tenteram kepadanya, dan dijadikan-Nya di antaramu rasa kasih dan sayang."
                     </div>
-                    <div class="verse-reference">— QS. Ar-Rum: 21 —</div>
+                    <div class="verse-reference" data-aos="fade-up" data-aos-delay="400">— QS. Ar-Rum: 21 —</div>
+                    <div class="verse-ornament-bottom">✦</div>
                 </div>
+            </div>
+            <div class="verse-decorative-bottom"></div>
+        </section>
+
+        <!-- Invitation Intro Section -->
+        <section id="invitation-intro" class="section invitation-intro-section">
+            <div class="intro-backdrop"></div>
+            <div class="intro-content" data-aos="fade-up" data-aos-delay="200">
+                <div class="intro-ornament-top" data-aos="fade-down" data-aos-delay="100">✦</div>
+                <p class="intro-text" data-aos="fade-up" data-aos-delay="300">
+                    Dengan memohon Rahmat dan Ridho Allah Subhanahu wa Ta'ala kami bermaksud untuk mengundang Bapak/Ibu/Saudara/i untuk menghadiri pernikahan kami:
+                </p>
+                <div class="intro-ornament-bottom" data-aos="fade-up" data-aos-delay="400">✦</div>
             </div>
         </section>
 
@@ -84,18 +381,17 @@
             <div class="butterfly butterfly-2"></div>
             <div class="butterfly butterfly-3"></div>
             
-            <div class="section-header" data-aos="fade-up" data-aos-delay="0">
+            <!-- <div class="section-header" data-aos="fade-up" data-aos-delay="0">
                 <div class="ornament-top" data-aos="fade-down" data-aos-delay="100"></div>
-                <h2 data-aos="zoom-in" data-aos-delay="200">Mempelai</h2>
                 <div class="ornament-bottom" data-aos="fade-up" data-aos-delay="300"></div>
-            </div>
+            </div> -->
             
             <div class="couple-container" data-aos="fade-up" data-aos-delay="200">
                 
                 <!-- Bride -->
                   <div class="person-info" data-aos="fade-up" data-aos-delay="350">
                     <h3 class="person-name">Ariyadi Armi, S.Pd.</h3>
-                    <p class="person-title">Anak Pertama dari</p>
+                    <p class="person-title">Putra dari</p>
                     <p class="parent-names">Bapak Ardi<br>& Ibu Kasmiati</p>
                     <div class="social-links">
                         <a href="#"><i class="fab fa-instagram"></i></a>
@@ -110,43 +406,11 @@
                 <!-- Groom -->
                        <div class="person-info" data-aos="fade-up" data-aos-delay="250">
                     <h3 class="person-name">Delvinda Trie Febrya, S.K.M.</h3>
-                    <p class="person-title">Anak Kelima dari</p>
+                    <p class="person-title">Putri dari</p>
                     <p class="parent-names">Bapak H. Asrizal<br>& Ibu Hj. Yusmeiyeni</p>
                     <div class="social-links">
                         <a href="#"><i class="fab fa-instagram"></i></a>
                     </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Countdown Section -->
-        <section id="countdown" class="section countdown-section">
-            <div class="countdown-bg"></div>
-            <!-- Floating Flowers -->
-            <div class="flower flower-1"></div>
-            <div class="flower flower-2"></div>
-            <div class="flower flower-3"></div>
-            <div class="flower flower-4"></div>
-            
-            <div class="section-header light">
-                <h2>Menghitung Hari</h2>
-            </div>
-            <div class="countdown-container">
-                <div class="countdown-item" data-aos="fade-up" data-aos-delay="200">
-                    <span class="countdown-number" id="days">00</span>
-                    <span class="countdown-label">Hari</span>
-                </div>
-                <div class="countdown-item" data-aos="fade-up" data-aos-delay="250">
-                    <span class="countdown-number" id="hours">00</span>
-                    <span class="countdown-label">Jam</span>
-                </div>
-                <div class="countdown-item" data-aos="fade-up" data-aos-delay="300">
-                    <span class="countdown-number" id="minutes">00</span>
-                    <span class="countdown-label">Menit</span>
-                </div>
-                <div class="countdown-item" data-aos="fade-up" data-aos-delay="350">
-                    <span class="countdown-number" id="seconds">00</span>
-                    <span class="countdown-label">Detik</span>
                 </div>
             </div>
         </section>
@@ -194,7 +458,7 @@
                     <div class="event-icon" data-aos="zoom-in" data-aos-delay="500">
                         <i class="fas fa-utensils"></i>
                     </div>
-                    <h3 class="event-title" data-aos="fade-up" data-aos-delay="600">Resepsi Mempelai Perempuan</h3>
+                    <h3 class="event-title" data-aos="fade-up" data-aos-delay="600">Resepsi</h3>
                     <div class="event-details" data-aos="fade-up" data-aos-delay="700">
                         <div class="detail-item">
                             <i class="far fa-calendar"></i>
@@ -220,6 +484,49 @@
             </div>
         </section>
 
+             <!-- Countdown Section -->
+        <section id="countdown" class="section countdown-section">
+            <div class="countdown-bg"></div>
+            <!-- Floating Flowers -->
+            <div class="flower flower-1"></div>
+            <div class="flower flower-2"></div>
+            <div class="flower flower-3"></div>
+            <div class="flower flower-4"></div>
+            
+            <div class="section-header light">
+                <h2>Menghitung Hari</h2>
+            </div>
+            <div class="countdown-container">
+                <div class="countdown-item" data-aos="fade-up" data-aos-delay="200">
+                    <span class="countdown-number" id="days">00</span>
+                    <span class="countdown-label">Hari</span>
+                </div>
+                <div class="countdown-item" data-aos="fade-up" data-aos-delay="250">
+                    <span class="countdown-number" id="hours">00</span>
+                    <span class="countdown-label">Jam</span>
+                </div>
+                <div class="countdown-item" data-aos="fade-up" data-aos-delay="300">
+                    <span class="countdown-number" id="minutes">00</span>
+                    <span class="countdown-label">Menit</span>
+                </div>
+                <div class="countdown-item" data-aos="fade-up" data-aos-delay="350">
+                    <span class="countdown-number" id="seconds">00</span>
+                    <span class="countdown-label">Detik</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Blessing Section -->
+        <section id="blessing" class="section blessing-main-section">
+            <div class="blessing-wrapper" data-aos="fade-up" data-aos-delay="200">
+                <h1 class="blessing-title">Doa untuk Pengantin</h1>
+                <div class="blessing-section" data-aos="fade-up" data-aos-delay="400">
+                    <p class="blessing-arabic">Baarakallahu laka wa baaraka 'alaika wa jama'a bainakuma fii khayrin</p>
+                    <p class="blessing-translation">"Semoga Allah memberikan keberkahan padamu dan mengumpulkan kalian berdua dalam kebaikan"</p>
+                </div>
+            </div>
+        </section>
+
         <!-- RSVP Section -->
         <section id="rsvp" class="section rsvp-section">
             <div class="section-header">
@@ -232,23 +539,6 @@
                 <div class="form-group">
                     <label for="name">Nama Lengkap</label>
                     <input type="text" id="name" name="name" placeholder="Masukkan nama lengkap" required>
-                </div>
-                <div class="form-group">
-                    <label for="attendance">Konfirmasi Kehadiran</label>
-                    <select id="attendance" name="attendance" required>
-                        <option value="">Pilih konfirmasi</option>
-                        <option value="hadir">Hadir</option>
-                        <option value="tidak">Tidak Hadir</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="guests">Jumlah Tamu</label>
-                    <select id="guests" name="guests">
-                        <option value="1">1 Orang</option>
-                        <option value="2">2 Orang</option>
-                        <option value="3">3 Orang</option>
-                        <option value="4">4 Orang</option>
-                    </select>
                 </div>
                 <div class="form-group">
                     <label for="message">Ucapan & Doa</label>
