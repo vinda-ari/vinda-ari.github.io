@@ -754,14 +754,23 @@ body {
 
         .blessing-main-section .blessing-title {
             font-family: 'Lora', serif;
-            font-size: 1.8rem;
+            font-size: 2rem;
             color: var(--primary-maroon);
             font-weight: 600;
-            letter-spacing: 1.5px;
+            letter-spacing: 0.5px;
             margin: 0 auto 50px auto;
             display: block;
             text-align: center;
+            white-space: nowrap;
             animation: fadeInDown 0.8s ease-out;
+        }
+
+        .blessing-main-section .blessing-title::before,
+        .blessing-main-section .blessing-title::after {
+            content: '✦';
+            color: rgba(128, 0, 32, 0.6);
+            font-size: 1rem;
+            margin: 0 12px;
         }.blessing-main-section .blessing-title::before,
 .blessing-main-section .blessing-title::after {
     content: '✦';
