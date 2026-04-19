@@ -295,6 +295,103 @@ function escapeHtml(text) {
     return div.innerHTML;
 }
 
+// ===== Pagination for Wishes =====
+let currentPage = 1;
+const itemsPerPage = 5;
+
+function updateWishesPagination() {
+    const wishContainer = document.getElementById('wishes-container');
+    if (!wishContainer) return;
+    
+    const wishCards = Array.from(wishContainer.querySelectorAll('.wish-card'));
+    
+    if (wishCards.length === 0) {
+        document.getElementById('current-page').textContent = '0';
+        document.getElementById('total-pages').textContent = '0';
+        return;
+    }
+    
+    const totalPages = Math.ceil(wishCards.length / itemsPerPage);
+    
+    // Ensure currentPage is valid
+    if (currentPage > totalPages) {
+        currentPage = totalPages;
+    }
+    
+    // Update page display
+    document.getElementById('current-page').textContent = currentPage;
+    document.getElementById('total-pages').textContent = totalPages;
+    
+    // Hide all cards
+    wishCards.forEach(card => {
+        card.style.display = 'none';
+        card.style.opacity = '0';
+    });
+    
+    // Show only cards for current page
+    const startIdx = (currentPage - 1) * itemsPerPage;
+    const endIdx = startIdx + itemsPerPage;
+    
+    wishCards.slice(startIdx, endIdx).forEach(card => {
+        card.style.display = 'block';
+        setTimeout(() => {
+            card.style.opacity = '1';
+        }, 10);
+    });
+    
+    // Disable/enable buttons
+    const prevBtn = document.querySelector('.prev-btn');
+    const nextBtn = document.querySelector('.next-btn');
+    
+    if (prevBtn) prevBtn.disabled = currentPage === 1;
+    if (nextBtn) nextBtn.disabled = currentPage === totalPages;
+    
+    // Hide pagination if only 1 page
+    const paginationContainer = document.querySelector('.wishes-pagination');
+    if (paginationContainer) {
+        paginationContainer.style.display = totalPages > 1 ? 'flex' : 'none';
+    }
+}
+
+function previousPage() {
+    if (currentPage > 1) {
+        currentPage--;
+        updateWishesPagination();
+    }
+}
+
+function nextPage() {
+    const wishContainer = document.getElementById('wishes-container');
+    if (!wishContainer) return;
+    
+    const wishCards = wishContainer.querySelectorAll('.wish-card');
+    const totalPages = Math.ceil(wishCards.length / itemsPerPage);
+    
+    if (currentPage < totalPages) {
+        currentPage++;
+        updateWishesPagination();
+    }
+}
+
+// Initialize pagination on page load
+window.addEventListener('DOMContentLoaded', () => {
+    setTimeout(() => {
+        updateWishesPagination();
+    }, 100);
+});
+
+// Update pagination when new wishes are added
+const wishesContainer = document.getElementById('wishes-container');
+if (wishesContainer) {
+    const observer = new MutationObserver(() => {
+        updateWishesPagination();
+    });
+
+    observer.observe(wishesContainer, {
+        childList: true
+    });
+}
+
 // ===== Smooth Scroll for Navigation =====
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
