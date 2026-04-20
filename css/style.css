@@ -625,7 +625,7 @@ body::before {
 .verse-reference {
     font-family: var(--font-display);
     font-size: 1.05rem;
-    color: #C41E3A;
+    color: #8B1538;
     text-shadow: 0 2px 4px rgba(200, 140, 160, 0.2);
     font-weight: 600;
     letter-spacing: 2px;
