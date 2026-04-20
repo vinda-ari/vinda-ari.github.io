@@ -1,21 +1,23 @@
-/* ===== ROOT VARIABLES ===== */
+/* ===== ROOT VARIABLES - MINANGKABAU RUMAH MINANG AESTHETIC ===== */
 :root {
-    /* Elegant Maroon Color Palette */
-    --primary-maroon: #800020;
-    --primary-maroon-light: #A0152E;
-    --primary-maroon-dark: #5C0011;
-    --secondary-maroon: #B8405E;
-    --accent-gold: #D4AF37;
-    --accent-gold-light: #F4E4BC;
-    --accent-gold-dark: #B8960C;
-    --accent-rose: #C89FA3;
-    --cream: #FFF8F0;
-    --cream-dark: #F5E6D8;
-    --dark: #1A1A1A;
-    --dark-light: #2D2D2D;
+    /* Minangkabau House (Rumah Minang) Color Palette */
+    --primary-maroon: #8B4513;       /* Warm saddle brown */
+    --primary-maroon-light: #A0522D;
+    --primary-maroon-dark: #654321;  /* Deep chocolate brown */
+    --secondary-maroon: #CD853F;     /* Peru/warm tan */
+    --accent-gold: #FFD700;          /* Bright gold for Minang traditional */
+    --accent-gold-light: #FFED4E;
+    --accent-gold-dark: #DAA520;     /* Goldenrod */
+    --accent-rose: #C85A54;          /* Rust/terracotta */
+    --cream: #F5DEB3;                /* Wheat color - natural Minang palette */
+    --cream-dark: #D2B48C;           /* Tan - warm earth tone */
+    --dark: #2C1810;                 /* Deep brown */
+    --dark-light: #3D2817;           /* Dark chocolate */
     --white: #FFFFFF;
-    --text-dark: #333333;
-    --text-light: #666666;
+    --text-dark: #3C2415;
+    --text-light: #5C4033;           /* Brown text for Minang feel */
+    --minang-copper: #B87333;        /* Copper accent */
+    --minang-rust: #A0522D;          /* Rustic red-brown */
     
     /* Fonts */
     --font-arabic: 'Amiri', serif;
@@ -46,10 +48,26 @@ html {
 
 body {
     font-family: var(--font-body);
-    background-color: var(--cream);
+    background: linear-gradient(135deg, #F5DEB3 0%, #D2B48C 50%, #EDD5B1 100%);
     color: var(--text-dark);
     line-height: 1.6;
     overflow-x: hidden;
+    position: relative;
+}
+
+/* Minangkabau traditional pattern overlay */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(184, 115, 51, 0.03) 35px, rgba(184, 115, 51, 0.03) 70px),
+        repeating-linear-gradient(-45deg, transparent, transparent 35px, rgba(160, 82, 45, 0.03) 35px, rgba(160, 82, 45, 0.03) 70px);
+    pointer-events: none;
+    z-index: 0;
 }
 
 .hidden {
@@ -62,16 +80,16 @@ body {
     overflow: hidden;
 }
 
-/* ===== ISLAMIC PATTERNS ===== */
+/* ===== MINANGKABAU PATTERNS ===== */
 .islamic-pattern-border {
     position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
     height: 60px;
-    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 20"><path fill="%23D4AF37" d="M0 20 Q25 0 50 20 Q75 0 100 20 L100 20 L0 20 Z"/></svg>') repeat-x;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 20"><path fill="%23FFD700" d="M0 20 Q25 0 50 20 Q75 0 100 20 L100 20 L0 20 Z"/><path fill="%238B4513" opacity="0.6" d="M0 18 Q25 8 50 18 Q75 8 100 18 L100 20 L0 20 Z"/></svg>') repeat-x;
     background-size: 100px 60px;
-    filter: drop-shadow(0 -2px 8px rgba(212, 175, 55, 0.3));
+    filter: drop-shadow(0 -2px 8px rgba(255, 215, 0, 0.3));
 }
 
 /* ===== MOSQUE SILHOUETTE ===== */
@@ -88,9 +106,9 @@ body {
     filter: blur(1px);
 }
 
-/* ===== OPENING SECTION ===== */
+/* ===== OPENING SECTION - MINANGKABAU STYLE ===== */
 .opening-section {
-    background: linear-gradient(135deg, var(--primary-maroon-dark) 0%, var(--primary-maroon) 50%, var(--primary-maroon-light) 100%);
+    background: linear-gradient(135deg, #C41E3A 0%, #8B1538 50%, #C41E3A 100%);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -105,9 +123,44 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background: radial-gradient(circle at 20% 50%, rgba(212, 175, 55, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 50%, rgba(160, 21, 46, 0.2) 0%, transparent 50%);
-    animation: gradientShift 8s ease infinite;
+    background-image: 
+        radial-gradient(2px 2px at 5% 10%, #FFD700, transparent),
+        radial-gradient(1.5px 1.5px at 15% 20%, #FFED4E, transparent),
+        radial-gradient(1px 1px at 25% 35%, #F0E68C, transparent),
+        radial-gradient(2px 2px at 35% 15%, #FFD700, transparent),
+        radial-gradient(1px 1px at 45% 50%, #DAA520, transparent),
+        radial-gradient(1.5px 1.5px at 55% 25%, #FFED4E, transparent),
+        radial-gradient(1px 1px at 65% 60%, #FFD700, transparent),
+        radial-gradient(2px 2px at 75% 40%, #F0E68C, transparent),
+        radial-gradient(1px 1px at 85% 70%, #FFED4E, transparent),
+        radial-gradient(1.5px 1.5px at 95% 30%, #FFD700, transparent),
+        radial-gradient(1px 1px at 10% 65%, #DAA520, transparent),
+        radial-gradient(2px 2px at 40% 80%, #FFED4E, transparent),
+        radial-gradient(1px 1px at 70% 15%, #FFD700, transparent),
+        radial-gradient(1.5px 1.5px at 80% 85%, #F0E68C, transparent),
+        radial-gradient(1px 1px at 20% 85%, #FFED4E, transparent),
+        radial-gradient(2px 2px at 90% 60%, #FFD700, transparent),
+        radial-gradient(1px 1px at 50% 90%, #DAA520, transparent),
+        radial-gradient(1.5px 1.5px at 30% 45%, #FFED4E, transparent),
+        radial-gradient(1px 1px at 60% 70%, #FFD700, transparent),
+        radial-gradient(2px 2px at 15% 75%, #F0E68C, transparent);
+    background-repeat: repeat;
+    background-size: 100% 100%;
+    animation: twinkle 4s ease-in-out infinite;
+    opacity: 0.8;
+}
+
+.opening-section::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 20% 30%, rgba(255, 215, 0, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(255, 215, 0, 0.03) 0%, transparent 50%);
+    pointer-events: none;
 }
 
 @keyframes gradientShift {
@@ -122,11 +175,11 @@ body {
     right: 0;
     bottom: 0;
     background-image: 
-        radial-gradient(2px 2px at 20px 30px, var(--accent-gold-light), transparent),
-        radial-gradient(2px 2px at 40px 70px, var(--accent-gold), transparent),
-        radial-gradient(1px 1px at 90px 40px, var(--white), transparent),
-        radial-gradient(2px 2px at 130px 80px, var(--accent-gold-light), transparent),
-        radial-gradient(1px 1px at 160px 120px, var(--accent-gold), transparent);
+        radial-gradient(2px 2px at 20px 30px, #FFD700, transparent),
+        radial-gradient(2px 2px at 40px 70px, #FFED4E, transparent),
+        radial-gradient(1px 1px at 90px 40px, #FFFACD, transparent),
+        radial-gradient(2px 2px at 130px 80px, #FFD700, transparent),
+        radial-gradient(1px 1px at 160px 120px, #DAA520, transparent);
     background-repeat: repeat;
     background-size: 200px 150px;
     animation: twinkle 4s ease-in-out infinite;
@@ -445,7 +498,7 @@ body {
 
 /* ===== VERSE SECTION ===== */
 .verse-section {
-    background: linear-gradient(135deg, #f5e6e8 0%, #e8f0e6 50%, #f0ebe8 100%);
+    background: linear-gradient(135deg, #C41E3A 0%, #8B1538 50%, #C41E3A 100%);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -462,8 +515,50 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background: radial-gradient(circle at 20% 30%, rgba(200, 160, 170, 0.08) 0%, transparent 50%),
-                radial-gradient(circle at 80% 70%, rgba(140, 160, 140, 0.08) 0%, transparent 50%);
+    background: radial-gradient(circle at 20% 30%, rgba(255, 215, 0, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(255, 215, 0, 0.06) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.verse-section::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 20% 30%, rgba(255, 215, 0, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(255, 215, 0, 0.03) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.verse-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        repeating-linear-gradient(90deg, transparent, transparent 60px, rgba(184, 115, 51, 0.08) 60px, rgba(184, 115, 51, 0.08) 120px),
+        repeating-linear-gradient(0deg, transparent, transparent 60px, rgba(160, 82, 45, 0.06) 60px, rgba(160, 82, 45, 0.06) 120px),
+        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1000"><defs><pattern id="rumahAdat" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="20" cy="20" r="15" fill="%23C85A54" opacity="0.06"/><circle cx="80" cy="30" r="12" fill="%238B4513" opacity="0.05"/></pattern></defs><rect width="1200" height="1000" fill="url(%23rumahAdat)"/><g opacity="0.2"><polygon points="200,300 350,150 350,250 50,250 50,150" fill="%23B87333" stroke="%238B4513" stroke-width="2"/><polygon points="1000,320 1150,170 1150,270 850,270 850,170" fill="%23B87333" stroke="%238B4513" stroke-width="2"/><polygon points="600,350 900,100 900,350 300,350 300,100" fill="%23A0522D" stroke="%238B4513" stroke-width="3"/><polygon points="630,180 780,80 780,350 420,350 420,80" fill="%23C9A876" opacity="0.3"/></g></svg>');
+    background-position: center, center, center;
+    background-repeat: repeat, repeat, repeat;
+    background-size: 120px 120px, 120px 120px, auto;
+    pointer-events: none;
+}
+
+.verse-section::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 20% 30%, rgba(200, 90, 84, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(184, 115, 51, 0.05) 0%, transparent 50%);
     pointer-events: none;
 }
 
@@ -530,7 +625,7 @@ body {
 .verse-reference {
     font-family: var(--font-display);
     font-size: 1.05rem;
-    color: var(--primary-maroon);
+    color: #C41E3A;
     text-shadow: 0 2px 4px rgba(200, 140, 160, 0.2);
     font-weight: 600;
     letter-spacing: 2px;
@@ -547,7 +642,7 @@ body {
 .section-header h2 {
     font-family: var(--font-display);
     font-size: 2.8rem;
-    color: var(--primary-maroon);
+    color: #FFD700;
     position: relative;
     display: inline-block;
     text-shadow: 0 2px 8px rgba(128, 0, 32, 0.15);
@@ -571,8 +666,39 @@ body {
 
 /* ===== COUPLE SECTION ===== */
 .couple-section {
-    background: linear-gradient(135deg, #faf6f3 0%, #f5f0ed 50%, #f0ebe8 100%);
+    background: linear-gradient(135deg, #C41E3A 0%, #8B1538 50%, #C41E3A 100%);
     padding: 60px 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.couple-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 20% 30%, rgba(255, 215, 0, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(255, 215, 0, 0.06) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.couple-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        repeating-linear-gradient(90deg, transparent, transparent 60px, rgba(184, 115, 51, 0.08) 60px, rgba(184, 115, 51, 0.08) 120px),
+        repeating-linear-gradient(0deg, transparent, transparent 60px, rgba(160, 82, 45, 0.06) 60px, rgba(160, 82, 45, 0.06) 120px),
+        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1000"><g opacity="0.18"><polygon points="200,300 350,150 350,250 50,250 50,150" fill="%23B87333" stroke="%238B4513" stroke-width="2"/><polygon points="1000,320 1150,170 1150,270 850,270 850,170" fill="%23B87333" stroke="%238B4513" stroke-width="2"/><polygon points="600,350 900,100 900,350 300,350 300,100" fill="%23A0522D" stroke="%238B4513" stroke-width="3"/></g></svg>');
+    background-position: center, center, center;
+    background-repeat: repeat, repeat, repeat;
+    background-size: 120px 120px, 120px 120px, auto;
+    pointer-events: none;
 }
 
 .couple-container {
@@ -583,6 +709,8 @@ body {
     flex-wrap: wrap;
     max-width: 1200px;
     margin: 0 auto;
+    position: relative;
+    z-index: 1;
 }
 
 .person-card {
@@ -721,7 +849,7 @@ body {
 
 /* ===== BLESSING SECTION ===== */
 .blessing-main-section {
-    background: linear-gradient(135deg, var(--cream) 0%, var(--cream-dark) 100%);
+    background: linear-gradient(135deg, #C41E3A 0%, #8B1538 50%, #C41E3A 100%);
     min-height: 100vh;
     display: flex;
     align-items: center;
@@ -738,8 +866,8 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background: radial-gradient(circle at 20% 50%, rgba(200, 140, 160, 0.08) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(184, 64, 94, 0.08) 0%, transparent 50%);
+    background: radial-gradient(circle at 20% 30%, rgba(255, 215, 0, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(255, 215, 0, 0.06) 0%, transparent 50%);
     pointer-events: none;
     z-index: 0;
 }
@@ -768,25 +896,19 @@ body {
         .blessing-main-section .blessing-title::before,
         .blessing-main-section .blessing-title::after {
             content: '✦';
-            color: rgba(128, 0, 32, 0.6);
-            font-size: 1rem;
-            margin: 0 12px;
-        }.blessing-main-section .blessing-title::before,
-.blessing-main-section .blessing-title::after {
-    content: '✦';
-    color: rgba(128, 0, 32, 0.6);
-    font-size: 1.2rem;
-    margin: 0 18px;
+            color: rgba(139, 69, 19, 0.6);
+            font-size: 1.2rem;
+            margin: 0 18px;
 }
 
 .blessing-main-section .blessing-section {
     max-width: 850px;
     margin: 0 auto;
     padding: 60px 50px;
-    background: rgba(255, 255, 255, 0.6);
+    background: rgba(255, 255, 255, 0.7);
     border-radius: 20px;
     backdrop-filter: blur(10px);
-    border: 2px solid rgba(128, 0, 32, 0.15);
+    border: 2px solid rgba(139, 69, 19, 0.2);
     animation: fadeInUp 1s ease-out 0.3s both;
 }
 
@@ -815,7 +937,7 @@ body {
 
 /* ===== COUNTDOWN SECTION ===== */
 .countdown-section {
-    background: linear-gradient(135deg, var(--primary-maroon-dark) 0%, var(--primary-maroon) 100%);
+    background: linear-gradient(135deg, #C41E3A 0%, #8B1538 50%, #C41E3A 100%);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -833,7 +955,8 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background: radial-gradient(circle at 30% 40%, rgba(212, 175, 55, 0.1) 0%, transparent 60%);
+    background: radial-gradient(circle at 20% 30%, rgba(255, 215, 0, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(255, 215, 0, 0.06) 0%, transparent 50%);
 }
 
 .countdown-bg {
@@ -890,8 +1013,39 @@ body {
 
 /* ===== EVENTS SECTION ===== */
 .events-section {
-    background: linear-gradient(135deg, #e8f0e6 0%, #f0e6e8 50%, #e6ebe8 100%);
+    background: linear-gradient(135deg, #C41E3A 0%, #8B1538 50%, #C41E3A 100%);
     padding: 60px 20px 80px;
+    position: relative;
+    overflow: hidden;
+}
+
+.events-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 20% 30%, rgba(255, 215, 0, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(255, 215, 0, 0.06) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.events-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        repeating-linear-gradient(90deg, transparent, transparent 60px, rgba(184, 115, 51, 0.08) 60px, rgba(184, 115, 51, 0.08) 120px),
+        repeating-linear-gradient(0deg, transparent, transparent 60px, rgba(160, 82, 45, 0.06) 60px, rgba(160, 82, 45, 0.06) 120px),
+        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1000"><g opacity="0.18"><polygon points="200,300 350,150 350,250 50,250 50,150" fill="%23B87333" stroke="%238B4513" stroke-width="2"/><polygon points="1000,320 1150,170 1150,270 850,270 850,170" fill="%23B87333" stroke="%238B4513" stroke-width="2"/><polygon points="600,350 900,100 900,350 300,350 300,100" fill="%23A0522D" stroke="%238B4513" stroke-width="3"/></g></svg>');
+    background-position: center, center, center;
+    background-repeat: repeat, repeat, repeat;
+    background-size: 120px 120px, 120px 120px, auto;
+    pointer-events: none;
 }
 
 .events-container {
@@ -901,6 +1055,8 @@ body {
     flex-wrap: wrap;
     max-width: 1000px;
     margin: 0 auto;
+    position: relative;
+    z-index: 1;
 }
 
 .event-card {
@@ -1055,8 +1211,21 @@ body {
 
 /* ===== RSVP SECTION ===== */
 .rsvp-section {
-    background: var(--cream);
+    background: linear-gradient(135deg, #C41E3A 0%, #8B1538 50%, #C41E3A 100%);
     padding: 60px 20px 80px;
+    position: relative;
+    overflow: hidden;
+}
+
+.rsvp-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 20% 30%, rgba(255, 215, 0, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(255, 215, 0, 0.06) 0%, transparent 50%);
 }
 
 .rsvp-form {
@@ -1128,8 +1297,21 @@ body {
 
 /* ===== WISHES SECTION ===== */
 .wishes-section {
-    background: var(--cream);
+    background: linear-gradient(135deg, #C41E3A 0%, #8B1538 50%, #C41E3A 100%);
     padding: 60px 20px 80px;
+    position: relative;
+    overflow: hidden;
+}
+
+.wishes-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 20% 30%, rgba(255, 215, 0, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(255, 215, 0, 0.06) 0%, transparent 50%);
 }
 
 .wishes-container {
@@ -1379,10 +1561,22 @@ body {
 
 /* ===== CLOSING SECTION ===== */
 .closing-section {
-    background: linear-gradient(135deg, var(--cream) 0%, var(--cream-dark) 100%);
+    background: linear-gradient(135deg, #C41E3A 0%, #8B1538 50%, #C41E3A 100%);
     padding: 80px 20px;
     min-height: auto;
     position: relative;
+    overflow: hidden;
+}
+
+.closing-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 20% 30%, rgba(255, 215, 0, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(255, 215, 0, 0.06) 0%, transparent 50%);
 }
 
 .closing-content {
@@ -1398,26 +1592,26 @@ body {
 .closing-verse .arabic-text {
     font-family: var(--font-arabic);
     font-size: 2rem;
-    color: var(--primary-maroon);
+    color: #FFD700;
     margin-bottom: 15px;
-    text-shadow: 0 2px 4px rgba(128, 0, 32, 0.1);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .closing-verse .translation {
-    color: var(--text-light);
+    color: #FFFFFF;
     font-style: italic;
 }
 
 .thank-you h2 {
     font-family: var(--font-display);
     font-size: 2.5rem;
-    color: var(--primary-maroon);
+    color: #FFD700;
     margin-bottom: 20px;
     text-shadow: 0 2px 4px rgba(128, 0, 32, 0.1);
 }
 
 .thank-you p {
-    color: var(--text-light);
+    color: #FFFFFF;
     max-width: 600px;
     margin: 0 auto 30px;
     line-height: 1.8;
