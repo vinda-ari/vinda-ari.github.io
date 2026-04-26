@@ -48,7 +48,10 @@ html {
 
 body {
     font-family: var(--font-body);
-    background: linear-gradient(135deg, #F5DEB3 0%, #D2B48C 50%, #EDD5B1 100%);
+    background-image: linear-gradient(135deg, #F5DEB3 0%, #D2B48C 50%, #EDD5B1 100%);
+    background-attachment: fixed, scroll;
+    background-size: cover, auto;
+    background-position: center, top;
     color: var(--text-dark);
     line-height: 1.6;
     overflow-x: hidden;
@@ -191,6 +194,93 @@ body::before {
     50% { opacity: 1; }
 }
 
+.ornament-decoration {
+    position: absolute;
+    z-index: 3;
+    opacity: 0.8;
+    font-size: 4rem;
+    color: rgba(255, 215, 0, 0.6);
+    animation: float 4s ease-in-out infinite;
+}
+
+.ornament-top-left {
+    top: 40px;
+    left: 30px;
+    content: '✦';
+}
+
+.ornament-top-left::before {
+    content: '✦';
+}
+
+.ornament-top-right {
+    top: 50px;
+    right: 30px;
+    content: '✦';
+}
+
+.ornament-top-right::before {
+    content: '✦';
+}
+
+.ornament-bottom-left {
+    bottom: 80px;
+    left: 20px;
+    content: '✦';
+}
+
+.ornament-bottom-left::before {
+    content: '✦';
+}
+
+.ornament-bottom-right {
+    bottom: 80px;
+    right: 20px;
+    content: '✦';
+}
+
+.ornament-bottom-right::before {
+    content: '✦';
+}
+
+.floral-accent {
+    position: absolute;
+    z-index: 4;
+    opacity: 0.7;
+    font-size: 3rem;
+    color: rgba(212, 175, 55, 0.5);
+    animation: float 5s ease-in-out infinite reverse;
+}
+
+.floral-accent-left {
+    top: 50%;
+    left: 15px;
+    transform: translateY(-50%);
+}
+
+.floral-accent-left::before {
+    content: '❀';
+}
+
+.floral-accent-right {
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
+}
+
+.floral-accent-right::before {
+    content: '❀';
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
 .opening-content {
     text-align: center;
     color: var(--white);
@@ -213,19 +303,20 @@ body::before {
 
 .kepada-text {
     font-size: 0.85rem;
-    color: var(--accent-gold-light);
+    color: #FFFFFF;
     margin-bottom: 10px;
     font-style: italic;
     letter-spacing: 1px;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
 }
 
 .guest-name {
     font-family: var(--font-display);
     font-size: 1.5rem;
-    color: var(--accent-gold);
+    color: #FFFFFF;
     font-weight: 700;
     margin: 0;
-    text-shadow: 0 2px 8px rgba(212, 175, 55, 0.5);
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
     line-height: 1.4;
 }
 
@@ -266,6 +357,8 @@ body::before {
     font-size: 1.3rem;
     margin-bottom: 20px;
     animation: fadeInUp 1s ease 0.3s both;
+    color: #FFFFFF;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
 }
 
 .wedding-intro {
@@ -276,11 +369,12 @@ body::before {
 .wedding-intro h2 {
     font-family: var(--font-display);
     font-size: 1.8rem;
-    color: var(--white);
+    color: #FFFFFF;
     margin-bottom: 15px;
     letter-spacing: 3px;
     text-transform: uppercase;
     font-weight: 400;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
 }
 
 .wedding-couple-names {
@@ -293,27 +387,31 @@ body::before {
 
 .couple-first,
 .couple-second {
-    font-family: var(--font-display);
-    font-weight: 700;
-    color: var(--accent-gold);
-    text-shadow: 0 4px 12px rgba(212, 175, 55, 0.4);
+    font-family: 'Pinyon Script', cursive;
+    font-weight: 400;
+    color: #FFFF00;
+    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+    font-size: 5rem;
 }
 
 .couple-and {
-    font-family: var(--font-display);
-    color: var(--white);
+    font-family: 'Josefin Sans', sans-serif;
+    color: #FFFF00;
     font-size: 2rem;
     font-weight: 300;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+    letter-spacing: 2px;
 }
 
 .wedding-hashtag {
     font-family: var(--font-body);
     font-size: 1.1rem;
-    color: var(--accent-gold);
+    color: #FFFFFF;
     margin-top: 15px;
     letter-spacing: 1px;
-    font-weight: 600;
+    font-weight: 400;
     animation: fadeInUp 1s ease 0.7s both;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
 }
 
 .geometric-divider {
@@ -343,8 +441,8 @@ body::before {
     color: var(--dark);
     border: none;
     padding: 18px 45px;
-    font-size: 1.15rem;
-    font-weight: 600;
+    font-size: 0.85rem;
+    font-weight: 300;
     border-radius: 50px;
     cursor: pointer;
     display: inline-flex;
