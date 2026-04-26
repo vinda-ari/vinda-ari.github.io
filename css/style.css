@@ -92,7 +92,7 @@ body::before {
     height: 60px;
     background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 20"><path fill="%23FFD700" d="M0 20 Q25 0 50 20 Q75 0 100 20 L100 20 L0 20 Z"/><path fill="%238B4513" opacity="0.6" d="M0 18 Q25 8 50 18 Q75 8 100 18 L100 20 L0 20 Z"/></svg>') repeat-x;
     background-size: 100px 60px;
-    filter: drop-shadow(0 -2px 8px rgba(255, 215, 0, 0.3));
+    filter: drop-shadow(0 -2px 8px rgba(205, 189, 98, 0.3));
 }
 
 /* ===== MOSQUE SILHOUETTE ===== */
@@ -111,59 +111,55 @@ body::before {
 
 /* ===== OPENING SECTION - MINANGKABAU STYLE ===== */
 .opening-section {
-    background: linear-gradient(135deg, #C41E3A 0%, #8B1538 50%, #C41E3A 100%);
+    background: url('../images/minangk.jpeg') center/cover no-repeat,
+                linear-gradient(135deg, rgba(139, 21, 56, 0.65) 0%, rgba(196, 30, 58, 0.65) 25%, rgba(92, 15, 35, 0.65) 50%, rgba(196, 30, 58, 0.65) 75%, rgba(139, 21, 56, 0.65) 100%);
+    background-blend-mode: multiply;
+    background-size: cover, 400% 400%;
+    background-attachment: fixed;
+    animation: gradientFlow 15s ease infinite;
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
     overflow: hidden;
+    min-height: 100vh;
 }
 
-.opening-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: 
-        radial-gradient(2px 2px at 5% 10%, #FFD700, transparent),
-        radial-gradient(1.5px 1.5px at 15% 20%, #FFED4E, transparent),
-        radial-gradient(1px 1px at 25% 35%, #F0E68C, transparent),
-        radial-gradient(2px 2px at 35% 15%, #FFD700, transparent),
-        radial-gradient(1px 1px at 45% 50%, #DAA520, transparent),
-        radial-gradient(1.5px 1.5px at 55% 25%, #FFED4E, transparent),
-        radial-gradient(1px 1px at 65% 60%, #FFD700, transparent),
-        radial-gradient(2px 2px at 75% 40%, #F0E68C, transparent),
-        radial-gradient(1px 1px at 85% 70%, #FFED4E, transparent),
-        radial-gradient(1.5px 1.5px at 95% 30%, #FFD700, transparent),
-        radial-gradient(1px 1px at 10% 65%, #DAA520, transparent),
-        radial-gradient(2px 2px at 40% 80%, #FFED4E, transparent),
-        radial-gradient(1px 1px at 70% 15%, #FFD700, transparent),
-        radial-gradient(1.5px 1.5px at 80% 85%, #F0E68C, transparent),
-        radial-gradient(1px 1px at 20% 85%, #FFED4E, transparent),
-        radial-gradient(2px 2px at 90% 60%, #FFD700, transparent),
-        radial-gradient(1px 1px at 50% 90%, #DAA520, transparent),
-        radial-gradient(1.5px 1.5px at 30% 45%, #FFED4E, transparent),
-        radial-gradient(1px 1px at 60% 70%, #FFD700, transparent),
-        radial-gradient(2px 2px at 15% 75%, #F0E68C, transparent);
-    background-repeat: repeat;
-    background-size: 100% 100%;
-    animation: twinkle 4s ease-in-out infinite;
-    opacity: 0.8;
+@keyframes gradientFlow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
-.opening-section::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: 
-        radial-gradient(circle at 20% 30%, rgba(255, 215, 0, 0.05) 0%, transparent 50%),
-        radial-gradient(circle at 80% 70%, rgba(255, 215, 0, 0.03) 0%, transparent 50%);
-    pointer-events: none;
+@keyframes borderGlow {
+    0%, 100% { 
+        box-shadow: 
+            0 0 20px rgba(212, 175, 55, 0.4),
+            inset 0 0 10px rgba(255, 255, 255, 0.1),
+            0 0 40px rgba(212, 175, 55, 0.2);
+        opacity: 0.95;
+    }
+    25% { 
+        box-shadow: 
+            0 0 40px rgba(212, 175, 55, 0.7),
+            inset 0 0 20px rgba(255, 255, 255, 0.4),
+            0 0 60px rgba(212, 175, 55, 0.5);
+        opacity: 1;
+    }
+    50% { 
+        box-shadow: 
+            0 0 50px rgba(212, 175, 55, 0.8),
+            inset 0 0 25px rgba(255, 255, 255, 0.5),
+            0 0 80px rgba(212, 175, 55, 0.6);
+        opacity: 1;
+    }
+    75% { 
+        box-shadow: 
+            0 0 40px rgba(212, 175, 55, 0.7),
+            inset 0 0 20px rgba(255, 255, 255, 0.4),
+            0 0 60px rgba(212, 175, 55, 0.5);
+        opacity: 1;
+    }
 }
 
 @keyframes gradientShift {
@@ -197,16 +193,18 @@ body::before {
 .ornament-decoration {
     position: absolute;
     z-index: 3;
-    opacity: 0.8;
-    font-size: 4rem;
-    color: rgba(255, 215, 0, 0.6);
+    opacity: 1;
+    font-size: 5rem;
+    color: #DC143C;
     animation: float 4s ease-in-out infinite;
+    filter: drop-shadow(0 0 20px rgba(220, 20, 60, 0.8)) drop-shadow(0 0 40px rgba(220, 20, 60, 0.4));
+    text-shadow: 0 0 20px rgba(220, 20, 60, 0.6);
 }
 
 .ornament-top-left {
-    top: 40px;
-    left: 30px;
-    content: '✦';
+    top: 25px;
+    left: 20px;
+    animation: float 4s ease-in-out infinite, glow 3s ease-in-out infinite, pulse 2s ease-in-out infinite;
 }
 
 .ornament-top-left::before {
@@ -214,9 +212,9 @@ body::before {
 }
 
 .ornament-top-right {
-    top: 50px;
-    right: 30px;
-    content: '✦';
+    top: 25px;
+    right: 20px;
+    animation: float 4s ease-in-out infinite 0.5s, glow 3s ease-in-out infinite 0.3s, pulse 2s ease-in-out infinite 0.3s;
 }
 
 .ornament-top-right::before {
@@ -224,9 +222,9 @@ body::before {
 }
 
 .ornament-bottom-left {
-    bottom: 80px;
+    bottom: 30px;
     left: 20px;
-    content: '✦';
+    animation: float 4s ease-in-out infinite 1s, glow 3s ease-in-out infinite 0.6s, pulse 2s ease-in-out infinite 0.6s;
 }
 
 .ornament-bottom-left::before {
@@ -234,9 +232,9 @@ body::before {
 }
 
 .ornament-bottom-right {
-    bottom: 80px;
+    bottom: 30px;
     right: 20px;
-    content: '✦';
+    animation: float 4s ease-in-out infinite 1.5s, glow 3s ease-in-out infinite 0.9s, pulse 2s ease-in-out infinite 0.9s;
 }
 
 .ornament-bottom-right::before {
@@ -246,16 +244,19 @@ body::before {
 .floral-accent {
     position: absolute;
     z-index: 4;
-    opacity: 0.7;
-    font-size: 3rem;
-    color: rgba(212, 175, 55, 0.5);
+    opacity: 1;
+    font-size: 4rem;
+    color: #FFD700;
     animation: float 5s ease-in-out infinite reverse;
+    filter: drop-shadow(0 0 18px rgba(212, 175, 55, 0.7)) drop-shadow(0 0 36px rgba(212, 175, 55, 0.3));
+    text-shadow: 0 0 18px rgba(212, 175, 55, 0.5);
 }
 
 .floral-accent-left {
     top: 50%;
-    left: 15px;
+    left: 5px;
     transform: translateY(-50%);
+    animation: float 5s ease-in-out infinite reverse, glow 3s ease-in-out infinite, pulse 2s ease-in-out infinite;
 }
 
 .floral-accent-left::before {
@@ -264,8 +265,9 @@ body::before {
 
 .floral-accent-right {
     top: 50%;
-    right: 15px;
+    right: 5px;
     transform: translateY(-50%);
+    animation: float 5s ease-in-out infinite reverse, glow 3s ease-in-out infinite 0.5s, pulse 2s ease-in-out infinite 0.5s;
 }
 
 .floral-accent-right::before {
@@ -277,7 +279,27 @@ body::before {
         transform: translateY(0px);
     }
     50% {
-        transform: translateY(-10px);
+        transform: translateY(-15px);
+    }
+}
+
+@keyframes glow {
+    0%, 100% {
+        filter: drop-shadow(0 0 10px rgba(220, 20, 60, 0.4)) drop-shadow(0 0 20px rgba(220, 20, 60, 0.2));
+    }
+    50% {
+        filter: drop-shadow(0 0 25px rgba(220, 20, 60, 0.8)) drop-shadow(0 0 40px rgba(220, 20, 60, 0.5));
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.1);
+        opacity: 1;
     }
 }
 
@@ -285,21 +307,34 @@ body::before {
     text-align: center;
     color: var(--white);
     z-index: 10;
-    padding: 20px;
-    max-width: 600px;
+    padding: 30px 40px;
+    max-width: 700px;
+    animation: fadeInUp 1.5s ease 0.3s both;
 }
 
 .guest-name-container {
-    margin: 12px auto;
-    padding: 10px 15px;
-    max-width: 360px;
+    margin: 15px auto;
+    padding: 14px 28px;
+    max-width: 420px;
     width: fit-content;
-    background: rgba(255, 255, 255, 0.12);
-    border-radius: 12px;
-    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 15px;
+    backdrop-filter: blur(12px);
     border: 2px solid var(--accent-gold);
-    animation: fadeInUp 1s ease 0.5s both;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    animation: fadeInUp 1.2s ease 0.6s both;
+    box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.3),
+        inset 0 0 20px rgba(212, 175, 55, 0.1),
+        0 0 20px rgba(212, 175, 55, 0.2);
+    transition: all 0.3s ease;
+}
+
+.guest-name-container:hover {
+    background: rgba(255, 255, 255, 0.12);
+    box-shadow: 
+        0 12px 40px rgba(0, 0, 0, 0.4),
+        inset 0 0 25px rgba(212, 175, 55, 0.15),
+        0 0 30px rgba(212, 175, 55, 0.3);
 }
 
 .kepada-text {
@@ -600,122 +635,125 @@ body::before {
 
 /* ===== VERSE SECTION ===== */
 .verse-section {
-    background: linear-gradient(135deg, #C41E3A 0%, #8B1538 50%, #C41E3A 100%);
+    background: url('../images/minangk.jpeg') center/cover no-repeat,
+                linear-gradient(135deg, rgba(139, 21, 56, 0.68) 0%, rgba(196, 30, 58, 0.68) 25%, rgba(92, 15, 35, 0.68) 50%, rgba(196, 30, 58, 0.68) 75%, rgba(139, 21, 56, 0.68) 100%);
+    background-blend-mode: multiply;
+    background-size: cover, 400% 400%;
+    background-attachment: fixed;
+    animation: gradientFlow 15s ease infinite;
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 70vh;
-    padding: 80px 20px;
     position: relative;
     overflow: hidden;
-}
-
-.verse-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: radial-gradient(circle at 20% 30%, rgba(255, 215, 0, 0.08) 0%, transparent 50%),
-                radial-gradient(circle at 80% 70%, rgba(255, 215, 0, 0.06) 0%, transparent 50%);
-    pointer-events: none;
-}
-
-.verse-section::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: 
-        radial-gradient(circle at 20% 30%, rgba(255, 215, 0, 0.05) 0%, transparent 50%),
-        radial-gradient(circle at 80% 70%, rgba(255, 215, 0, 0.03) 0%, transparent 50%);
-    pointer-events: none;
-}
-
-.verse-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: 
-        repeating-linear-gradient(90deg, transparent, transparent 60px, rgba(184, 115, 51, 0.08) 60px, rgba(184, 115, 51, 0.08) 120px),
-        repeating-linear-gradient(0deg, transparent, transparent 60px, rgba(160, 82, 45, 0.06) 60px, rgba(160, 82, 45, 0.06) 120px),
-        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1000"><defs><pattern id="rumahAdat" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="20" cy="20" r="15" fill="%23C85A54" opacity="0.06"/><circle cx="80" cy="30" r="12" fill="%238B4513" opacity="0.05"/></pattern></defs><rect width="1200" height="1000" fill="url(%23rumahAdat)"/><g opacity="0.2"><polygon points="200,300 350,150 350,250 50,250 50,150" fill="%23B87333" stroke="%238B4513" stroke-width="2"/><polygon points="1000,320 1150,170 1150,270 850,270 850,170" fill="%23B87333" stroke="%238B4513" stroke-width="2"/><polygon points="600,350 900,100 900,350 300,350 300,100" fill="%23A0522D" stroke="%238B4513" stroke-width="3"/><polygon points="630,180 780,80 780,350 420,350 420,80" fill="%23C9A876" opacity="0.3"/></g></svg>');
-    background-position: center, center, center;
-    background-repeat: repeat, repeat, repeat;
-    background-size: 120px 120px, 120px 120px, auto;
-    pointer-events: none;
-}
-
-.verse-section::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: radial-gradient(circle at 20% 30%, rgba(200, 90, 84, 0.05) 0%, transparent 50%),
-                radial-gradient(circle at 80% 70%, rgba(184, 115, 51, 0.05) 0%, transparent 50%);
-    pointer-events: none;
-}
-
-.islamic-frame {
-    background: rgba(255, 255, 255, 0.85);
-    border: 3px solid rgba(200, 140, 160, 0.6);
-    border-radius: 25px;
-    padding: 60px 50px;
-    max-width: 850px;
-    position: relative;
-    backdrop-filter: blur(10px);
-    box-shadow: 0 15px 40px rgba(140, 100, 120, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.4);
-    animation: fadeInUp 1s ease 0.3s both;
-}
-
-.islamic-frame::before,
-.islamic-frame::after {
-    content: '✦';
-    position: absolute;
-    color: rgba(200, 140, 160, 0.8);
-    font-size: 2rem;
-    text-shadow: 0 0 8px rgba(200, 140, 160, 0.3);
-    animation: fadeInDown 1s ease 0.5s both;
-}
-
-.islamic-frame::before {
-    top: -20px;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-.islamic-frame::after {
-    bottom: -20px;
-    left: 50%;
-    transform: translateX(-50%);
+    min-height: 100vh;
 }
 
 .verse-content {
     text-align: center;
     color: var(--white);
+    z-index: 10;
+    padding: 40px 50px;
+    max-width: 800px;
+    animation: fadeInUp 1.5s ease 0.3s both;
 }
 
-.arabic-verse {
-    font-family: var(--font-arabic);
-    font-size: 2.2rem;
-    line-height: 2.2;
-    color: var(--primary-maroon);
-    margin-bottom: 35px;
-    direction: rtl;
-    font-weight: 700;
-    animation: fadeInUp 1s ease 0.4s both;
+.verse-ornament-decoration {
+    position: absolute;
+    z-index: 3;
+    opacity: 1;
+    font-size: 5rem;
+    color: #FFD700;
+    animation: float 4s ease-in-out infinite;
+    filter: drop-shadow(0 0 20px rgba(212, 175, 55, 0.8)) drop-shadow(0 0 40px rgba(212, 175, 55, 0.4));
+    text-shadow: 0 0 20px rgba(212, 175, 55, 0.6);
+}
+
+.verse-ornament-top-left {
+    top: 25px;
+    left: 20px;
+    animation: float 4s ease-in-out infinite, glow 3s ease-in-out infinite, pulse 2s ease-in-out infinite;
+}
+
+.verse-ornament-top-left::before {
+    content: '✦';
+}
+
+.verse-ornament-top-right {
+    top: 25px;
+    right: 20px;
+    animation: float 4s ease-in-out infinite 0.5s, glow 3s ease-in-out infinite 0.3s, pulse 2s ease-in-out infinite 0.3s;
+}
+
+.verse-ornament-top-right::before {
+    content: '✦';
+}
+
+.verse-ornament-bottom-left {
+    bottom: 30px;
+    left: 20px;
+    animation: float 4s ease-in-out infinite 1s, glow 3s ease-in-out infinite 0.6s, pulse 2s ease-in-out infinite 0.6s;
+}
+
+.verse-ornament-bottom-left::before {
+    content: '✦';
+}
+
+.verse-ornament-bottom-right {
+    bottom: 30px;
+    right: 20px;
+    animation: float 4s ease-in-out infinite 1.5s, glow 3s ease-in-out infinite 0.9s, pulse 2s ease-in-out infinite 0.9s;
+}
+
+.verse-ornament-bottom-right::before {
+    content: '✦';
+}
+
+.verse-floral-accent {
+    position: absolute;
+    z-index: 4;
+    opacity: 1;
+    font-size: 4rem;
+    color: #FFD700;
+    animation: float 5s ease-in-out infinite reverse;
+    filter: drop-shadow(0 0 18px rgba(212, 175, 55, 0.7)) drop-shadow(0 0 36px rgba(212, 175, 55, 0.3));
+    text-shadow: 0 0 18px rgba(212, 175, 55, 0.5);
+}
+
+.verse-floral-accent-left {
+    top: 50%;
+    left: 5px;
+    transform: translateY(-50%);
+    animation: float 5s ease-in-out infinite reverse, glow 3s ease-in-out infinite, pulse 2s ease-in-out infinite;
+}
+
+.verse-floral-accent-left::before {
+    content: '❀';
+}
+
+.verse-floral-accent-right {
+    top: 50%;
+    right: 5px;
+    transform: translateY(-50%);
+    animation: float 5s ease-in-out infinite reverse, glow 3s ease-in-out infinite 0.5s, pulse 2s ease-in-out infinite 0.5s;
+}
+
+.verse-floral-accent-right::before {
+    content: '❀';
+}   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
 }
 
 .verse-translation {
     font-family: var(--font-body);
+    font-size: 1.1rem;
+    line-height: 1.9;
+    color: rgba(255, 255, 255, 0.95);
+    font-style: italic;
+    margin: 30px 0;
+    letter-spacing: 0.3px;
+    animation: fadeInUp 1s ease 0.5s both;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+}
     font-size: 1.1rem;
     line-height: 1.9;
     font-style: italic;
@@ -766,12 +804,84 @@ body::before {
     background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 150 20"><path fill="%23D4AF37" d="M0 10 Q37.5 0 75 10 Q112.5 20 150 10 L150 12 Q112.5 22 75 12 Q37.5 2 0 12 Z"/></svg>') no-repeat center;
 }
 
-/* ===== COUPLE SECTION ===== */
-.couple-section {
-    background: linear-gradient(135deg, #C41E3A 0%, #8B1538 50%, #C41E3A 100%);
-    padding: 60px 20px;
+/* ===== INVITATION INTRO SECTION ===== */
+.invitation-intro-section {
+    background: url('../images/minang.jpeg') center/cover no-repeat,
+                linear-gradient(135deg, rgba(139, 21, 56, 0.7) 0%, rgba(196, 30, 58, 0.7) 25%, rgba(92, 15, 35, 0.7) 50%, rgba(196, 30, 58, 0.7) 75%, rgba(139, 21, 56, 0.7) 100%);
+    background-blend-mode: multiply;
+    background-size: cover, 400% 400%;
+    background-attachment: fixed;
+    animation: gradientFlow 15s ease infinite;
+    padding: 100px 20px;
     position: relative;
     overflow: hidden;
+    min-height: 100vh;
+}
+
+.intro-backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 20% 30%, rgba(255, 215, 0, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(255, 215, 0, 0.02) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.intro-content {
+    max-width: 850px;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+.intro-ornament-top,
+.intro-ornament-bottom {
+    color: #FFD700;
+    font-size: 2rem;
+    margin: 15px 0;
+    animation: float 4s ease-in-out infinite, glow 3s ease-in-out infinite;
+    text-shadow: 0 0 15px rgba(212, 175, 55, 0.8);
+    filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.6));
+}
+
+.intro-ornament-bottom {
+    animation: float 4s ease-in-out infinite reverse, pulse 2s ease-in-out infinite;
+}
+
+.intro-text {
+    font-family: 'Lora', serif;
+    font-size: 1.3rem;
+    line-height: 2;
+    color: #FFFFFF;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    padding: 50px 40px;
+    border-left: 5px solid rgba(255, 215, 0, 0.5);
+    border-right: 5px solid rgba(255, 215, 0, 0.5);
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 15px;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 0 20px rgba(212, 175, 55, 0.2);
+    position: relative;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+    animation: fadeInUp 1s ease 0.5s both;
+}
+
+/* ===== COUPLE SECTION ===== */
+.couple-section {
+    background: url('../images/minangk.jpeg') center/cover no-repeat,
+                linear-gradient(135deg, rgba(139, 21, 56, 0.7) 0%, rgba(196, 30, 58, 0.7) 25%, rgba(92, 15, 35, 0.7) 50%, rgba(196, 30, 58, 0.7) 75%, rgba(139, 21, 56, 0.7) 100%);
+    background-blend-mode: multiply;
+    background-size: cover, 400% 400%;
+    background-attachment: fixed;
+    animation: gradientFlow 15s ease infinite;
+    padding: 100px 20px;
+    position: relative;
+    overflow: hidden;
+    min-height: 100vh;
 }
 
 .couple-section::before {
@@ -786,22 +896,7 @@ body::before {
     pointer-events: none;
 }
 
-.couple-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: 
-        repeating-linear-gradient(90deg, transparent, transparent 60px, rgba(184, 115, 51, 0.08) 60px, rgba(184, 115, 51, 0.08) 120px),
-        repeating-linear-gradient(0deg, transparent, transparent 60px, rgba(160, 82, 45, 0.06) 60px, rgba(160, 82, 45, 0.06) 120px),
-        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1000"><g opacity="0.18"><polygon points="200,300 350,150 350,250 50,250 50,150" fill="%23B87333" stroke="%238B4513" stroke-width="2"/><polygon points="1000,320 1150,170 1150,270 850,270 850,170" fill="%23B87333" stroke="%238B4513" stroke-width="2"/><polygon points="600,350 900,100 900,350 300,350 300,100" fill="%23A0522D" stroke="%238B4513" stroke-width="3"/></g></svg>');
-    background-position: center, center, center;
-    background-repeat: repeat, repeat, repeat;
-    background-size: 120px 120px, 120px 120px, auto;
-    pointer-events: none;
-}
+
 
 .couple-container {
     display: flex;
@@ -951,12 +1046,17 @@ body::before {
 
 /* ===== BLESSING SECTION ===== */
 .blessing-main-section {
-    background: linear-gradient(135deg, #C41E3A 0%, #8B1538 50%, #C41E3A 100%);
+    background: url('../images/minang.jpeg') center/cover no-repeat,
+                linear-gradient(135deg, rgba(139, 21, 56, 0.7) 0%, rgba(196, 30, 58, 0.7) 25%, rgba(92, 15, 35, 0.7) 50%, rgba(196, 30, 58, 0.7) 75%, rgba(139, 21, 56, 0.7) 100%);
+    background-blend-mode: multiply;
+    background-size: cover, 400% 400%;
+    background-attachment: fixed;
+    animation: gradientFlow 15s ease infinite;
     min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 80px 20px;
+    padding: 100px 20px;
     position: relative;
     overflow: hidden;
 }
@@ -1039,13 +1139,18 @@ body::before {
 
 /* ===== COUNTDOWN SECTION ===== */
 .countdown-section {
-    background: linear-gradient(135deg, #C41E3A 0%, #8B1538 50%, #C41E3A 100%);
+    background: url('../images/minangk.jpeg') center/cover no-repeat,
+                linear-gradient(135deg, rgba(139, 21, 56, 0.7) 0%, rgba(196, 30, 58, 0.7) 25%, rgba(92, 15, 35, 0.7) 50%, rgba(196, 30, 58, 0.7) 75%, rgba(139, 21, 56, 0.7) 100%);
+    background-blend-mode: multiply;
+    background-size: cover, 400% 400%;
+    background-attachment: fixed;
+    animation: gradientFlow 15s ease infinite;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-height: 50vh;
-    padding: 60px 20px;
+    min-height: 100vh;
+    padding: 100px 20px;
     position: relative;
     overflow: hidden;
 }
@@ -1061,7 +1166,7 @@ body::before {
                 radial-gradient(circle at 80% 70%, rgba(255, 215, 0, 0.06) 0%, transparent 50%);
 }
 
-.countdown-bg {
+/* .countdown-bg {
     position: absolute;
     top: 0;
     left: 0;
@@ -1069,7 +1174,7 @@ body::before {
     bottom: 0;
     background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80"><path fill="%23D4AF37" fill-opacity="0.1" d="M40 0 L45 35 L80 40 L45 45 L40 80 L35 45 L0 40 L35 35 Z"/></svg>') repeat;
     background-size: 80px 80px;
-}
+} */
 
 .countdown-container {
     display: flex;
@@ -1115,10 +1220,16 @@ body::before {
 
 /* ===== EVENTS SECTION ===== */
 .events-section {
-    background: linear-gradient(135deg, #C41E3A 0%, #8B1538 50%, #C41E3A 100%);
-    padding: 60px 20px 80px;
+    background: url('../images/minang.jpeg') center/cover no-repeat,
+                linear-gradient(135deg, rgba(139, 21, 56, 0.7) 0%, rgba(196, 30, 58, 0.7) 25%, rgba(92, 15, 35, 0.7) 50%, rgba(196, 30, 58, 0.7) 75%, rgba(139, 21, 56, 0.7) 100%);
+    background-blend-mode: multiply;
+    background-size: cover, 400% 400%;
+    background-attachment: fixed;
+    animation: gradientFlow 15s ease infinite;
+    padding: 100px 20px;
     position: relative;
     overflow: hidden;
+    min-height: auto;
 }
 
 .events-section::before {
@@ -1133,7 +1244,7 @@ body::before {
     pointer-events: none;
 }
 
-.events-section::before {
+/* .events-section::before {
     content: '';
     position: absolute;
     top: 0;
@@ -1148,7 +1259,7 @@ body::before {
     background-repeat: repeat, repeat, repeat;
     background-size: 120px 120px, 120px 120px, auto;
     pointer-events: none;
-}
+} */
 
 .events-container {
     display: flex;
@@ -1313,10 +1424,16 @@ body::before {
 
 /* ===== RSVP SECTION ===== */
 .rsvp-section {
-    background: linear-gradient(135deg, #C41E3A 0%, #8B1538 50%, #C41E3A 100%);
-    padding: 60px 20px 80px;
+    background: url('../images/minang.jpeg') center/cover no-repeat,
+                linear-gradient(135deg, rgba(139, 21, 56, 0.7) 0%, rgba(196, 30, 58, 0.7) 25%, rgba(92, 15, 35, 0.7) 50%, rgba(196, 30, 58, 0.7) 75%, rgba(139, 21, 56, 0.7) 100%);
+    background-blend-mode: multiply;
+    background-size: cover, 400% 400%;
+    background-attachment: fixed;
+    animation: gradientFlow 15s ease infinite;
+    padding: 100px 20px;
     position: relative;
     overflow: hidden;
+    min-height: auto;
 }
 
 .rsvp-section::before {
@@ -1399,10 +1516,16 @@ body::before {
 
 /* ===== WISHES SECTION ===== */
 .wishes-section {
-    background: linear-gradient(135deg, #C41E3A 0%, #8B1538 50%, #C41E3A 100%);
-    padding: 60px 20px 80px;
+    background: url('../images/minangk.jpeg') center/cover no-repeat,
+                linear-gradient(135deg, rgba(139, 21, 56, 0.7) 0%, rgba(196, 30, 58, 0.7) 25%, rgba(92, 15, 35, 0.7) 50%, rgba(196, 30, 58, 0.7) 75%, rgba(139, 21, 56, 0.7) 100%);
+    background-blend-mode: multiply;
+    background-size: cover, 400% 400%;
+    background-attachment: fixed;
+    animation: gradientFlow 15s ease infinite;
+    padding: 100px 20px;
     position: relative;
     overflow: hidden;
+    min-height: auto;
 }
 
 .wishes-section::before {
@@ -1663,9 +1786,14 @@ body::before {
 
 /* ===== CLOSING SECTION ===== */
 .closing-section {
-    background: linear-gradient(135deg, #C41E3A 0%, #8B1538 50%, #C41E3A 100%);
-    padding: 80px 20px;
-    min-height: auto;
+    background: url('../images/minang.jpeg') center/cover no-repeat,
+                linear-gradient(135deg, rgba(139, 21, 56, 0.7) 0%, rgba(196, 30, 58, 0.7) 25%, rgba(92, 15, 35, 0.7) 50%, rgba(196, 30, 58, 0.7) 75%, rgba(139, 21, 56, 0.7) 100%);
+    background-blend-mode: multiply;
+    background-size: cover, 400% 400%;
+    background-attachment: fixed;
+    animation: gradientFlow 15s ease infinite;
+    padding: 100px 20px;
+    min-height: 100vh;
     position: relative;
     overflow: hidden;
 }
@@ -1732,7 +1860,7 @@ body::before {
 .closing-mosque {
     height: 150px;
     margin-top: 50px;
-    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 150"><path fill="%230D5C3D" opacity="0.2" d="M0 150 L0 130 Q100 120 100 80 L100 60 Q80 40 100 20 Q120 40 100 60 L100 80 Q100 120 200 130 L200 150 M250 150 L250 120 L300 120 L300 150 M350 150 L350 100 Q400 90 400 50 L400 30 Q380 10 400 0 Q420 10 400 30 L400 50 Q400 90 450 100 L450 150 M500 150 L500 120 L550 120 L550 150 M600 150 L600 130 Q700 120 700 80 L700 60 Q680 40 700 20 Q720 40 700 60 L700 80 Q700 120 800 130 L800 150 Z"/></svg>') no-repeat center bottom;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 150"><path fill="%23FFFF00" opacity="0.2" d="M0 150 L0 130 Q100 120 100 80 L100 60 Q80 40 100 20 Q120 40 100 60 L100 80 Q100 120 200 130 L200 150 M250 150 L250 120 L300 120 L300 150 M350 150 L350 100 Q400 90 400 50 L400 30 Q380 10 400 0 Q420 10 400 30 L400 50 Q400 90 450 100 L450 150 M500 150 L500 120 L550 120 L550 150 M600 150 L600 130 Q700 120 700 80 L700 60 Q680 40 700 20 Q720 40 700 60 L700 80 Q700 120 800 130 L800 150 Z"/></svg>') no-repeat center bottom;
     background-size: contain;
 }
 
@@ -2144,7 +2272,7 @@ body::before {
 
 /* ===== COUPLE SECTION ===== */
 .couple-section {
-    background: var(--cream);
+    /* background: var(--cream); */
     padding: 60px 20px;
 }
 
@@ -2228,7 +2356,7 @@ body::before {
 .person-name {
     font-family: var(--font-display);
     font-size: 2.2rem;
-    color: var(--primary-maroon);
+    color: yellow;
     font-weight: 700;
     text-shadow: 0 1px 3px rgba(128, 0, 32, 0.1);
     margin-bottom: 8px;
@@ -2236,7 +2364,7 @@ body::before {
 
 .person-title {
     font-size: 0.85rem;
-    color: #999;
+    color: white;
     letter-spacing: 2px;
     text-transform: uppercase;
     font-weight: 600;
@@ -2245,7 +2373,7 @@ body::before {
 
 .parent-names {
     font-size: 1rem;
-    color: var(--text-dark);
+    color: yellow;
     line-height: 1.6;
     margin: 12px 0;
     letter-spacing: 0.3px;
