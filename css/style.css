@@ -2462,3 +2462,18 @@ body::before {
     0%, 100% { transform: scale(1); }
     50% { transform: scale(1.15); }
 }
+
+/* ===== MOBILE FIX - Disable fixed backgrounds on small screens ===== */
+@media (max-width: 768px) {
+    .opening-section,
+    .invitation-intro-section,
+    .couple-section,
+    .countdown-section,
+    .blessing-main-section,
+    .rsvp-section,
+    .wishes-section,
+    .closing-section,
+    .verse-section {
+        background-attachment: scroll !important;
+    }
+}
