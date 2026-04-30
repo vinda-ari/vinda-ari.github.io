@@ -22,7 +22,7 @@ function getGuestName() {
         guestNameInline.textContent = decodedName;
     } else {
         guestNameElement.textContent = 'Tamu Undangan';
-        guestNameInline.textContent = 'Bapak/Ibu/Saudara/i';
+        // guestNameInline.textContent = '/Saudara/i';
     }
 }
 
@@ -222,42 +222,6 @@ function showNotification(message) {
     }, 3000);
 }
 
-// ===== RSVP Form Submission =====
-document.addEventListener('DOMContentLoaded', () => {
-    const rsvpForm = document.querySelector('.rsvp-form');
-    
-    if (rsvpForm) {
-        rsvpForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            
-            // Get form data
-            const formData = new FormData(rsvpForm);
-            const name = formData.get('name');
-            const message = formData.get('message');
-            
-            // Validate
-            if (!name) {
-                showNotification('Mohon lengkapi data yang diperlukan');
-                return;
-            }
-            
-            // Create wish card
-            addWishCard(name, message);
-            
-            // Reset form
-            rsvpForm.reset();
-            
-            // Show success notification
-            showNotification('Terima kasih atas konfirmasi kehadiran Anda!');
-            
-            // Scroll to wishes section
-            setTimeout(() => {
-                document.getElementById('wishes').scrollIntoView({ behavior: 'smooth' });
-            }, 1000);
-        });
-    }
-});
-
 // ===== Add Wish Card =====
 function addWishCard(name, message) {
     const wishesContainer = document.getElementById('wishes-container');
@@ -292,97 +256,39 @@ function escapeHtml(text) {
 let currentPage = 1;
 const itemsPerPage = 5;
 
-function updateWishesPagination() {
-    const wishContainer = document.getElementById('wishes-container');
-    if (!wishContainer) return;
-    
-    const wishCards = Array.from(wishContainer.querySelectorAll('.wish-card'));
-    
-    if (wishCards.length === 0) {
-        document.getElementById('current-page').textContent = '0';
-        document.getElementById('total-pages').textContent = '0';
+function previousPage() {
+    if (!allWishes || allWishes.length === 0) {
+        console.warn('⚠️ No wishes available yet');
         return;
     }
-    
-    const totalPages = Math.ceil(wishCards.length / itemsPerPage);
-    
-    // Ensure currentPage is valid
-    if (currentPage > totalPages) {
-        currentPage = totalPages;
-    }
-    
-    // Update page display
-    document.getElementById('current-page').textContent = currentPage;
-    document.getElementById('total-pages').textContent = totalPages;
-    
-    // Hide all cards
-    wishCards.forEach(card => {
-        card.style.display = 'none';
-        card.style.opacity = '0';
-    });
-    
-    // Show only cards for current page
-    const startIdx = (currentPage - 1) * itemsPerPage;
-    const endIdx = startIdx + itemsPerPage;
-    
-    wishCards.slice(startIdx, endIdx).forEach(card => {
-        card.style.display = 'block';
-        setTimeout(() => {
-            card.style.opacity = '1';
-        }, 10);
-    });
-    
-    // Disable/enable buttons
-    const prevBtn = document.querySelector('.prev-btn');
-    const nextBtn = document.querySelector('.next-btn');
-    
-    if (prevBtn) prevBtn.disabled = currentPage === 1;
-    if (nextBtn) nextBtn.disabled = currentPage === totalPages;
-    
-    // Hide pagination if only 1 page
-    const paginationContainer = document.querySelector('.wishes-pagination');
-    if (paginationContainer) {
-        paginationContainer.style.display = totalPages > 1 ? 'flex' : 'none';
-    }
-}
-
-function previousPage() {
     if (currentPage > 1) {
         currentPage--;
-        updateWishesPagination();
+        displayWishesFromSheet();
+        setTimeout(() => {
+            const container = document.getElementById('wishes-container');
+            if (container) {
+                container.scrollIntoView({ behavior: 'smooth' });
+            }
+        }, 100);
     }
 }
 
 function nextPage() {
-    const wishContainer = document.getElementById('wishes-container');
-    if (!wishContainer) return;
-    
-    const wishCards = wishContainer.querySelectorAll('.wish-card');
-    const totalPages = Math.ceil(wishCards.length / itemsPerPage);
-    
+    if (!allWishes || allWishes.length === 0) {
+        console.warn('⚠️ No wishes available yet');
+        return;
+    }
+    const totalPages = Math.ceil(allWishes.length / itemsPerPage);
     if (currentPage < totalPages) {
         currentPage++;
-        updateWishesPagination();
+        displayWishesFromSheet();
+        setTimeout(() => {
+            const container = document.getElementById('wishes-container');
+            if (container) {
+                container.scrollIntoView({ behavior: 'smooth' });
+            }
+        }, 100);
     }
-}
-
-// Initialize pagination on page load
-window.addEventListener('DOMContentLoaded', () => {
-    setTimeout(() => {
-        updateWishesPagination();
-    }, 100);
-});
-
-// Update pagination when new wishes are added
-const wishesContainer = document.getElementById('wishes-container');
-if (wishesContainer) {
-    const observer = new MutationObserver(() => {
-        updateWishesPagination();
-    });
-
-    observer.observe(wishesContainer, {
-        childList: true
-    });
 }
 
 // ===== Smooth Scroll for Navigation =====
@@ -528,7 +434,7 @@ function createConfetti() {
 
 // ===== Console Easter Egg =====
 console.log('%c💒 Wedding Invitation', 'font-size: 24px; font-weight: bold; color: #D4AF37;');
-console.log('%cAhmad & Fatimah', 'font-size: 18px; color: #0D5C3D;');
+console.log('%cAri & Vinda', 'font-size: 18px; color: #0D5C3D;');
 console.log('%cBarakallahu lakuma wa baraka alaikuma', 'font-size: 14px; color: #666;');
 
 // ===== Floating Action Buttons =====
@@ -567,4 +473,193 @@ window.addEventListener('scroll', () => {
             scrollTopBtn.style.pointerEvents = 'none';
         }
     }
+});
+
+// ===== Google Sheets Integration - Fetch and Display Wishes =====
+const sheetScriptURL = 'https://script.google.com/macros/s/AKfycby6jOmXCTAsrXybINsau4eZ2KgiAouRYKYrhC1UGuThBmhmah2jfOlt7WAjIO9ifZac/exec';
+let allWishes = [];
+
+// Fetch wishes from Google Sheet
+function fetchWishes() {
+    console.log('🔄 Fetching wishes from Google Sheet...');
+    console.log('🔗 URL:', sheetScriptURL);
+    
+    fetch(sheetScriptURL)
+        .then(response => {
+            console.log('📡 Response received:', response.status, response.statusText);
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.text(); // Get as text first
+        })
+        .then(text => {
+            console.log('📝 Response text:', text.substring(0, 500));
+            try {
+                const data = JSON.parse(text); // Then parse JSON
+                console.log('📊 Parsed JSON:', data);
+                console.log('📊 Type:', typeof data);
+                console.log('📊 Is array?:', Array.isArray(data));
+                
+                if (!Array.isArray(data)) {
+                    console.error('❌ Data is not an array');
+                    allWishes = [];
+                    displayWishesFromSheet();
+                    return;
+                }
+                
+                console.log('📊 Raw array length:', data.length);
+                
+                // Filter and process
+                allWishes = data.filter(wish => {
+                    const valid = wish && wish.name && wish.name.trim() && wish.message && wish.message.trim();
+                    console.log('🔍 Checking:', wish.name, '-', wish.message, '-> Valid:', valid);
+                    return valid;
+                }).reverse();
+                
+                console.log('✅ Filtered wishes count:', allWishes.length);
+                console.log('✅ Filtered wishes:', allWishes);
+                
+                currentPage = 1;
+                displayWishesFromSheet();
+                
+            } catch(parseError) {
+                console.error('❌ JSON Parse error:', parseError);
+                allWishes = [];
+                displayWishesFromSheet();
+            }
+        })
+        .catch(error => {
+            console.error('❌ Fetch error:', error);
+            console.error('❌ Error message:', error.message);
+            allWishes = [];
+            const container = document.getElementById('wishes-container');
+            if (container) {
+                container.innerHTML = '<p style="text-align: center; color: #999; padding: 40px;">⚠️ Gagal memuat data: ' + error.message + '</p>';
+            }
+        });
+}
+
+// Display wishes from Google Sheet with pagination
+function displayWishesFromSheet() {
+    const container = document.getElementById('wishes-container');
+    const pageEl = document.getElementById('current-page');
+    const totalEl = document.getElementById('total-pages');
+    const paginationEl = document.querySelector('.wishes-pagination');
+    const prevBtn = document.querySelector('.prev-btn');
+    const nextBtn = document.querySelector('.next-btn');
+
+    // Safety check
+    if (!container) {
+        console.error('❌ wishes-container not found');
+        return;
+    }
+
+    // Jika data kosong
+    if (!allWishes || allWishes.length === 0) {
+        container.innerHTML = `
+            <p style="text-align:center; color:#999; padding:40px;">
+                Belum ada ucapan. Jadilah yang pertama mengirim!
+            </p>
+        `;
+
+        if (pageEl) pageEl.textContent = '1';
+        if (totalEl) totalEl.textContent = '0';
+
+        if (paginationEl) {
+            paginationEl.style.display = 'none';
+        }
+
+        return;
+    }
+
+    // Hitung total halaman
+    const totalPages = Math.ceil(allWishes.length / itemsPerPage);
+
+    // Kalau currentPage melebihi total page
+    if (currentPage > totalPages) {
+        currentPage = totalPages;
+    }
+
+    if (currentPage < 1) {
+        currentPage = 1;
+    }
+
+    // Ambil data sesuai halaman
+    const startIndex = (currentPage - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+    const wishesToDisplay = allWishes.slice(startIndex, endIndex);
+
+    // Show / hide pagination
+    if (paginationEl) {
+        paginationEl.style.display = totalPages > 1 ? 'flex' : 'none';
+    }
+
+    // Generate card
+    const cardsHtml = wishesToDisplay.map(wish => `
+        <div class="wish-card">
+            <div class="wish-header">
+                <div class="wish-avatar">
+                    <i class="fas fa-user"></i>
+                </div>
+                <div class="wish-info">
+                    <h4>${escapeHtml(wish.name)}</h4>
+                  
+                </div>
+            </div>
+            <p class="wish-message">${escapeHtml(wish.message)}</p>
+        </div>
+    `).join('');
+
+    // Render sekali saja
+    container.innerHTML = cardsHtml;
+
+    // Update page text
+    if (pageEl) pageEl.textContent = currentPage;
+    if (totalEl) totalEl.textContent = totalPages;
+
+    // Tombol prev
+    if (prevBtn) {
+        prevBtn.disabled = currentPage === 1;
+        prevBtn.style.opacity = currentPage === 1 ? '0.4' : '1';
+        prevBtn.style.pointerEvents = currentPage === 1 ? 'none' : 'auto';
+    }
+
+    // Tombol next
+    if (nextBtn) {
+        nextBtn.disabled = currentPage === totalPages;
+        nextBtn.style.opacity = currentPage === totalPages ? '0.4' : '1';
+        nextBtn.style.pointerEvents = currentPage === totalPages ? 'none' : 'auto';
+    }
+}
+
+// Beautiful Success Popup
+function showSuccessPopup(message) {
+    const popup = document.createElement('div');
+    popup.className = 'success-popup';
+    popup.innerHTML = `
+        <div class="popup-content">
+            <div class="popup-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h3>Sukses!</h3>
+            <p>${message}</p>
+            <div class="popup-animation"></div>
+        </div>
+    `;
+    
+    document.body.appendChild(popup);
+    
+    setTimeout(() => {
+        popup.classList.add('show');
+    }, 10);
+    
+    setTimeout(() => {
+        popup.classList.remove('show');
+        setTimeout(() => popup.remove(), 500);
+    }, 2500);
+}
+
+// Load wishes on page load
+window.addEventListener('DOMContentLoaded', () => {
+    fetchWishes();
 });
