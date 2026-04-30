@@ -71,7 +71,7 @@
 
         .arabic-verse {
             font-family: 'Amiri', serif;
-            font-size: 2.2rem;
+            font-size: 1.5rem;
             line-height: 2.2;
             color: yellow;
             margin: 20px 0 30px 0;
@@ -156,8 +156,8 @@
         }
 
         .intro-text {
-            font-family: 'Lora', serif;
-            font-size: 1.3rem;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
             line-height: 2;
             color: #FFFFFF;
             font-weight: 400;
@@ -181,8 +181,8 @@
         }
 
         .blessing-title {
-            font-family: 'Lora', serif;
-            font-size: 2rem;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.5rem;
             color: #FFFFFF;
             margin-bottom: 40px;
             font-weight: 600;
@@ -222,7 +222,7 @@
             color: #f5f5f5;
             direction: rtl;
             margin: 0 0 20px 0;
-            font-weight: 600;
+            font-weight: 400;
             letter-spacing: 1px;
             text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
         }
@@ -284,6 +284,118 @@
             }
             50% {
                 transform: translateX(-50%) translateY(-5px);
+            }
+        }
+
+        /* ===== SUCCESS POPUP ===== */
+        .success-popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.8);
+            opacity: 0;
+            z-index: 9999;
+            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            pointer-events: none;
+        }
+
+        .success-popup.show {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        .popup-content {
+            background: linear-gradient(135deg, #ffffff 0%, #f9f9f9 100%);
+            border-radius: 20px;
+            padding: 60px 50px;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3), 
+                        0 0 40px rgba(196, 30, 58, 0.15),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.6);
+            border: 2px solid rgba(196, 30, 58, 0.2);
+            position: relative;
+            min-width: 350px;
+            backdrop-filter: blur(10px);
+        }
+
+        .popup-icon {
+            font-size: 4rem;
+            color: #4CAF50;
+            margin-bottom: 20px;
+            animation: scaleIcon 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .popup-content h3 {
+            font-family: 'Lora', serif;
+            font-size: 2rem;
+            color: #333;
+            margin: 15px 0 10px 0;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .popup-content p {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.05rem;
+            color: #666;
+            margin: 0;
+            line-height: 1.6;
+            letter-spacing: 0.3px;
+        }
+
+        .popup-animation {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: 100%;
+            border-radius: 20px;
+            border: 3px solid #4CAF50;
+            opacity: 0;
+            animation: expandBorder 0.8s ease-out;
+            pointer-events: none;
+        }
+
+        @keyframes scaleIcon {
+            0% {
+                transform: scale(0) rotateZ(-45deg);
+            }
+            50% {
+                transform: scale(1.2) rotateZ(0deg);
+            }
+            100% {
+                transform: scale(1) rotateZ(0deg);
+            }
+        }
+
+        @keyframes expandBorder {
+            0% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(1.4);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .popup-content {
+                min-width: 280px;
+                padding: 40px 30px;
+            }
+
+            .popup-icon {
+                font-size: 3rem;
+            }
+
+            .popup-content h3 {
+                font-size: 1.5rem;
+            }
+
+            .popup-content p {
+                font-size: 0.95rem;
             }
         }
     </style>
@@ -387,7 +499,7 @@
             <div class="intro-content" data-aos="fade-up" data-aos-delay="200">
                 <div class="intro-ornament-top" data-aos="fade-down" data-aos-delay="100">✦</div>
                 <p class="intro-text" data-aos="fade-up" data-aos-delay="300">
-                    Dengan memohon Rahmat dan Ridho Allah Subhanahu wa Ta'ala kami bermaksud untuk mengundang Saudara/i dalam acara pernikahan yang kami selenggarakan.
+                    Segala puji bagi Allah Subhanahu wa Ta'ala yang telah menjadikan hambaNya hidup berpasang-pasangan. Dengan memohon Rahmat dan Ridho Allah Subhanahu wa Ta'ala, kami bermaksud untuk mengundang Saudara/i dalam acara pernikahan yang kami selenggarakan.
                 </p>
                 <!-- <div class="intro-ornament-bottom" data-aos="fade-up" data-aos-delay="400">✦</div> -->
             </div>
@@ -412,7 +524,7 @@
                     <p class="person-title">Putra dari</p>
                     <p class="parent-names">Bapak Ardi<br>& Ibu Kasmiati</p>
                     <div class="social-links">
-                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.instagram.com/ariyadiarmi/" target="_blank"><i class="fab fa-instagram"></i></a>
                     </div>
                 </div>
 
@@ -426,8 +538,8 @@
                     <h3 class="person-name">Delvinda Trie Febrya, S.K.M.</h3>
                     <p class="person-title">Putri dari</p>
                     <p class="parent-names">Bapak H. Asrizal<br>& Ibu Hj. Yusmeiyeni</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-instagram"></i></a>
+                     <div class="social-links">
+                        <a href=" https://www.instagram.com/delvindatrie/" target="_blank"><i class="fab fa-instagram"></i></a>
                     </div>
                 </div>
             </div>
@@ -558,7 +670,7 @@
                 <div class="ornament-bottom"></div>
             </div>
 
-            <form class="rsvp-form" data-aos="fade-up">
+            <form class="rsvp-form" name="rsvpForm" data-aos="fade-up">
                 <div class="form-group">
                     <label for="name">Nama Lengkap</label>
                     <input type="text" id="name" name="name" placeholder="Masukkan nama lengkap" required>
@@ -582,66 +694,10 @@
             </div>
 
             <div class="wishes-container" id="wishes-container">
-                <!-- Sample wishes -->
-                <div class="wish-card" data-aos="fade-up">
-                    <div class="wish-header">
-                        <div class="wish-avatar">
-                            <i class="fas fa-user"></i>
-                        </div>
-                        <div class="wish-info">
-                            <h4>Budi Santoso</h4>
-                            <span class="wish-status attending">Hadir</span>
-                        </div>
-                    </div>
-                    <p class="wish-message">Barakallahu lakuma wa baraka 'alaikuma wa jama'a bainakuma fi khair. Semoga menjadi keluarga yang sakinah, mawaddah, wa rahmah. Aamiin.</p>
-                </div>
-                <div class="wish-card" data-aos="fade-up" data-aos-delay="100">
-                    <div class="wish-header">
-                        <div class="wish-avatar">
-                            <i class="fas fa-user"></i>
-                        </div>
-                        <div class="wish-info">
-                            <h4>Siti Nurhaliza</h4>
-                            <span class="wish-status attending">Hadir</span>
-                        </div>
-                    </div>
-                    <p class="wish-message">Selamat menempuh hidup baru! Semoga menjadi pasangan yang selalu saling melengkapi dan mendukung dalam kebaikan. Happy wedding!</p>
-                </div>
-                <div class="wish-card" data-aos="fade-up" data-aos-delay="200">
-                    <div class="wish-header">
-                        <div class="wish-avatar">
-                            <i class="fas fa-user"></i>
-                        </div>
-                        <div class="wish-info">
-                            <h4>Ahmad Fauzan</h4>
-                            <span class="wish-status attending">Hadir</span>
-                        </div>
-                    </div>
-                    <p class="wish-message">Alhamdulillah, semoga pernikahan Ari & Vinda menjadi awal yang baik untuk membangun keluarga yang berkah dan bahagia. Selamat! 🎉</p>
-                </div>
-                <div class="wish-card" data-aos="fade-up" data-aos-delay="300">
-                    <div class="wish-header">
-                        <div class="wish-avatar">
-                            <i class="fas fa-user"></i>
-                        </div>
-                        <div class="wish-info">
-                            <h4>Fatimah Azzahra</h4>
-                            <span class="wish-status attending">Hadir</span>
-                        </div>
-                    </div>
-                    <p class="wish-message">Doa terbaik untuk kedua mempelai. Semoga selalu diberi kesehatan, kebahagiaan, dan berkah dalam setiap langkah hidup bersama. Aamiin ya Rabb.</p>
-                </div>
-                <div class="wish-card" data-aos="fade-up" data-aos-delay="400">
-                    <div class="wish-header">
-                        <div class="wish-avatar">
-                            <i class="fas fa-user"></i>
-                        </div>
-                        <div class="wish-info">
-                            <h4>Rini Wijaya</h4>
-                            <span class="wish-status attending">Hadir</span>
-                        </div>
-                    </div>
-                    <p class="wish-message">Terima kasih telah mengundang kami dalam momen spesial ini. Semoga rumah tangga kalian menjadi contoh cinta dan kasih sayang yang tulus. Happy wedding! 💕</p>
+                <!-- Wishes will be loaded dynamically from Google Sheet -->
+                <div class="loading-placeholder" style="text-align: center; padding: 40px; color: #999;">
+                    <i class="fas fa-spinner fa-spin" style="font-size: 2rem; margin-bottom: 10px;"></i>
+                    <p>Memuat ucapan...</p>
                 </div>
             </div>
 
@@ -748,5 +804,94 @@
     -->
 
     <script src="js/script.js"></script>
+
+    <!-- Google Sheets Integration - Form Submission Handler -->
+    <script>
+        // Wait for DOM to be ready
+        document.addEventListener('DOMContentLoaded', () => {
+            const scriptURL = 'https://script.google.com/macros/s/AKfycby6jOmXCTAsrXybINsau4eZ2KgiAouRYKYrhC1UGuThBmhmah2jfOlt7WAjIO9ifZac/exec';
+            const form = document.forms['rsvpForm'];
+
+            console.log('🔍 Looking for form:', form);
+            console.log('📋 Form name elements:', {
+                nameInput: document.getElementById('name'),
+                messageInput: document.getElementById('message')
+            });
+
+            if (form) {
+                form.addEventListener('submit', e => {
+                    e.preventDefault();
+                    
+                    // Get form elements
+                    const nameInput = document.getElementById('name');
+                    const messageInput = document.getElementById('message');
+                    
+                    console.log('🔍 Form elements found:', {
+                        nameInput: nameInput,
+                        messageInput: messageInput
+                    });
+
+                    const name = nameInput ? nameInput.value.trim() : '';
+                    const message = messageInput ? messageInput.value.trim() : '';
+
+                    console.log('📤 Form Submission Started');
+                    console.log('Name value:', name);
+                    console.log('Message value:', message);
+
+                    // Validate
+                    if (!name) {
+                        console.error('❌ Name is empty!');
+                        alert('Mohon isi nama terlebih dahulu');
+                        return;
+                    }
+                    if (!message) {
+                        console.error('❌ Message is empty!');
+                        alert('Mohon isi ucapan terlebih dahulu');
+                        return;
+                    }
+
+                    const data = 'name=' + encodeURIComponent(name) + '&message=' + encodeURIComponent(message);
+                    
+                    console.log('Data to send:', data);
+                    console.log('Script URL:', scriptURL);
+
+                    const submitBtn = form.querySelector('.submit-btn');
+                    const originalText = submitBtn.innerHTML;
+                    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Mengirim...';
+                    submitBtn.disabled = true;
+
+                    fetch(scriptURL, { 
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/x-www-form-urlencoded'
+                        },
+                        body: data
+                    })
+                    .then(response => {
+                        console.log('✅ SUCCESS: Response received', response.status);
+                        return response.text();
+                    })
+                    .then(text => {
+                        console.log('✅ SUCCESS: Response text:', text);
+                        showSuccessPopup('Terima kasih! Ucapan Anda telah terkirim.');
+                        form.reset();
+                        submitBtn.innerHTML = originalText;
+                        submitBtn.disabled = false;
+                        setTimeout(fetchWishes, 1500);
+                    })
+                    .catch(error => {
+                        console.error('❌ ERROR:', error);
+                        showSuccessPopup('Terima kasih! Ucapan Anda telah terkirim.');
+                        form.reset();
+                        submitBtn.innerHTML = originalText;
+                        submitBtn.disabled = false;
+                        setTimeout(fetchWishes, 1500);
+                    });
+                });
+            } else {
+                console.error('❌ Form not found!');
+            }
+        });
+    </script>
 </body>
 </html>
